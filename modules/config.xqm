@@ -10,7 +10,7 @@ import module namespace http="http://expath.org/ns/http-client" at "java:org.exi
 import module namespace nav="http://www.tei-c.org/tei-simple/navigation" at "navigation.xql";
 import module namespace tpu="http://www.tei-c.org/tei-publisher/util" at "lib/util.xql";
 
-declare namespace templates="http://exist-db.org/xquery/html-templating";
+declare namespace templates = "http://exist-db.org/xquery/html-templating";
 
 declare namespace repo="http://exist-db.org/xquery/repo";
 declare namespace expath="http://expath.org/ns/pkg";
@@ -20,21 +20,21 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 (:~~
  : The version of the pb-components webcomponents library to be used by this app.
  : Should either point to a version published on npm,
- : or be set to 'local' or 'dev'. 
- : 
+ : or be set to 'local' or 'dev'.
+ :
  : If set to 'local', webcomponents
  : are assumed to be self-hosted in the app (which means you
  : have to npm install them yourself using the existing package.json).
- : 
+ :
  : If a version is given, the components will be loaded from a public CDN.
  : This is recommended unless you develop your own components.
- : 
+ :
  : Using 'dev' will try to load the components from a local development
  : server started from within the pb-components repo clone by using `npm start`.
- : In this case, change $config:webcomponents-cdn to point to http://localhost:port 
+ : In this case, change $config:webcomponents-cdn to point to http://localhost:port
  : (default: 8000, but check where your server is running).
  :)
-declare variable $config:webcomponents :="1.24.18";
+declare variable $config:webcomponents := "1.24.18";
 
 (:~
  : CDN URL to use for loading webcomponents. Could be changed if you created your
@@ -69,18 +69,18 @@ declare variable $config:default-language := "en";
  : the parameters below for further configuration), or 'page' to browse
  : a document by actual pages determined by TEI pb elements.
  :)
-declare variable $config:default-view :="div";
+declare variable $config:default-view := "div";
 
 (:
  : The default HTML template used for viewing document content. This can be
  : overwritten by the teipublisher processing instruction inside a TEI document.
  :)
-declare variable $config:default-template :="view.html";
+declare variable $config:default-template := "view.html";
 
 (:
  : The element to search by default, either 'tei:div' or 'tei:text'.
  :)
-declare variable $config:search-default :="tei:div";
+declare variable $config:search-default := "tei:div";
 
 (:
  : Defines which nested divs will be displayed as single units on one
@@ -307,14 +307,14 @@ declare variable $config:data-exclude :=
 (:~
  : The main ODD to be used by default
  :)
-declare variable $config:default-odd :="tei_simplePrint.odd";
+declare variable $config:default-odd := "tei_simplePrint.odd";
 
 (:~
  : Complete list of ODD files used by the app. If you add another ODD to this list,
  : make sure to run modules/generate-pm-config.xql to update the main configuration
  : module for transformations (modules/pm-config.xql).
  :)
-declare variable $config:odd-available :=("tei_simplePrint.odd", "teipublisher.odd");
+declare variable $config:odd-available := ("tei_simplePrint.odd", "teipublisher.odd");
 
 (:~
  : List of ODD files which are used internally only, i.e. not for displaying information
@@ -346,43 +346,43 @@ declare variable $config:dts-collections := map {
     "id": "default",
     "title": $config:expath-descriptor/expath:title/string(),
     "memberCollections": (
-            map {
-                "id": "documents",
-                "title": "Document Collection",
-                "path": $config:data-default,
-                "members": function() {
-                    nav:get-root((), map {
-                        "leading-wildcard": "yes",
-                        "filter-rewrite": "yes"
-                    })
-                },
-                "metadata": function($doc as document-node()) {
-                    let $properties := tpu:parse-pi($doc, ())
-                    return
-                        map:merge((
-                            map:entry("title", nav:get-metadata($properties, $doc/*, "title")/string()),
-                            map {
-                                "dts:dublincore": map {
-                                    "dc:creator": string-join(nav:get-metadata($properties, $doc/*, "author"), "; "),
-                                    "dc:license": nav:get-metadata($properties, $doc/*, "license")
-                                }
-                            }
-                        ))
-                }
+        map {
+            "id": "documents",
+            "title": "Document Collection",
+            "path": $config:data-default,
+            "members": function() {
+                nav:get-root((), map {
+                    "leading-wildcard": "yes",
+                    "filter-rewrite": "yes"
+                })
             },
-            map {
-                "id": "odd",
-                "title": "ODD Collection",
-                "path": $config:odd-root,
-                "members": function() {
-                    collection($config:odd-root)/tei:TEI
-                },
-                "metadata": function($doc as document-node()) {
-                    map {
-                        "title": string-join($doc//tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[not(@type)], "; ")
-                    }
+            "metadata": function($doc as document-node()) {
+                let $properties := tpu:parse-pi($doc, ())
+                return
+                    map:merge((
+                        map:entry("title", nav:get-metadata($properties, $doc/*, "title")/string()),
+                        map {
+                            "dts:dublincore": map {
+                                "dc:creator": string-join(nav:get-metadata($properties, $doc/*, "author"), "; "),
+                                "dc:license": nav:get-metadata($properties, $doc/*, "license")
+                            }
+                        }
+                    ))
+            }
+        },
+        map {
+            "id": "odd",
+            "title": "ODD Collection",
+            "path": $config:odd-root,
+            "members": function() {
+                collection($config:odd-root)/tei:TEI
+            },
+            "metadata": function($doc as document-node()) {
+                map {
+                    "title": string-join($doc//tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[not(@type)], "; ")
                 }
             }
+        }
     )
 };
 
@@ -400,7 +400,7 @@ declare variable $config:dts-import-collection := $config:data-default || "/play
  : Change this to support different configurations for different collections or document types.
  : By default this returns a configuration based on the default settings defined
  : by other variables in this module.
- : 
+ :
  : @param $collection relative collection path (i.e. with $config:data-root stripped off)
  : @param $docUri relative document path (including $collection)
  :)
@@ -408,9 +408,9 @@ declare function config:collection-config($collection as xs:string?, $docUri as 
     (: Return empty sequence to use default config :)
     ()
 
-    (: 
+    (:
      : Replace line above with the following code to switch between different view configurations per collection.
-     : $collection corresponds to the relative collection path (i.e. after $config:data-root). 
+     : $collection corresponds to the relative collection path (i.e. after $config:data-root).
      :)
     (:
     switch ($collection)
@@ -439,7 +439,7 @@ declare function config:default-config($docUri as xs:string?) {
         "fill": $config:pagination-fill,
         "template": $config:default-template
     }
-    let $collection := 
+    let $collection :=
         if (exists($docUri)) then
             replace($docUri, "^(.*)/[^/]+$", "$1") => substring-after($config:data-root || "/")
         else
@@ -486,11 +486,14 @@ declare function config:get-id($node as node()) {
 (:~
  : Returns a path relative to $config:data-root used to locate a document in the database.
  :)
- declare function config:get-relpath($node as node()) {
-     let $root := if (ends-with($config:data-root, "/")) then $config:data-root else $config:data-root || "/"
-     return
-         substring-after(document-uri(root($node)), $root)
- };
+declare function config:get-relpath($node as node()) {
+    let $root := if (ends-with($config:data-root, "/")) then
+        $config:data-root
+    else
+        $config:data-root || "/"
+    return
+        substring-after(document-uri(root($node)), $root)
+};
 
 declare function config:get-identifier($node as node()) {
     if ($config:address-by-id) then
@@ -559,7 +562,7 @@ declare function config:app-info($node as node(), $model as map(*)) {
             }
             <tr>
                 <td>Controller:</td>
-                <td>{ request:get-attribute("$exist:controller") }</td>
+                <td>{request:get-attribute("$exist:controller")}</td>
             </tr>
         </table>
 };

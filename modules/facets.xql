@@ -38,7 +38,7 @@ declare function facets:sort($facets as map(*)?) {
 
 declare function facets:print-table($config as map(*), $nodes as element()+, $values as xs:string*, $params as xs:string*) {
     let $all := exists($config?max) and request:get-parameter("all-" || $config?dimension, ())
-    let $count := if ($all) then 50 else $config?max
+    let $count := if ($all) then 1000 else $config?max
     let $facets :=
         if (exists($values)) then
             ft:facets($nodes, $config?dimension, $count, $values)
@@ -96,7 +96,7 @@ declare function facets:display($config as map(*), $nodes as element()+) {
                 if (exists($config?max)) then
                     <paper-checkbox class="facet" name="all-{$config?dimension}">
                         { if (request:get-parameter("all-" || $config?dimension, ())) then attribute checked { "checked" } else () }
-                        <pb-i18n key="facets.show">Show top 50</pb-i18n>
+                        <pb-i18n >Show all</pb-i18n>
                     </paper-checkbox>
                 else
                     ()

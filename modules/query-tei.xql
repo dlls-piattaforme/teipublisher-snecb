@@ -72,6 +72,11 @@ declare function teis:autocomplete($doc as xs:string?, $fields as xs:string+, $q
                     function($key, $count) {
                         $key
                     }, 30)
+            case "datan" return
+                collection($config:data-root)/ft:index-keys-for-field("datan", $lower-case-q,
+                    function($key, $count) {
+                        $key
+                    }, 30)
             case "text" return
                 if ($doc) then (
                     doc($config:data-root || "/" || $doc)/util:index-keys-by-qname(xs:QName("tei:div"), $lower-case-q,

@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <html>
     <head>
         <meta charset="utf-8"/>
@@ -8,6 +10,7 @@
         <link rel="shortcut icon" type="image/png" href="resources/images/favicon-32.png" sizes="32x32"/>
         <link rel="shortcut icon" type="image/png" href="resources/images/favicon-64.png" sizes="64x64"/>
 
+        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
         <title data-template="config:app-title"/>
         <meta name="description" content="Default single text layout"/>
         <meta name="pb-template" content="view.html"/>
@@ -23,7 +26,7 @@
                 }
             }
 
-            .content-body {
+            .content-body2 {
                 position: relative;
                 display: flex;
                 justify-content: center;
@@ -49,6 +52,54 @@
                     display: none;
                 }
             }
+            .toolbar{
+                background-color: transparent !important;
+                width: 215px;
+                position: absolute;
+                left: 86vw;
+                padding: 0px;
+                top: 53px;
+
+            }
+            .button-container{
+                width: 50vw;
+                display: flex;
+                flex-direction: row;
+                margin-top:5px;
+            }
+
+            .card-info-only-button{
+                left: 50%;
+                font-size:11pt;
+                width: 80px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                text-align: center;
+                border-radius: 50px;
+                border: 2px solid black;
+                margin-top:5px;
+            }
+            .titContainer{
+                color: #44557a;
+                font-size: 1.5vw !important;
+                width: 60%;
+                letter-spacing: 1vw;
+                text-transform: uppercase;
+
+            }
+            .tp-title {
+               font-family: 'Rajdhani', sans-serif !important;
+                font-weight: 500 !important;
+            }
+            .menubar{
+                background-color:#44557a;
+            }
+            .tei-title4{
+                font-style:normal !important;
+            }
+
         </style>
     </head>
 
@@ -71,23 +122,43 @@
                             <pb-load id="toc" url="api/document/{doc}/contents?target=transcription&amp;icons=true" expand="expand" src="document1" subscribe="toc" load-once="load-once"><pb-i18n key="dialogs.loading">Loading</pb-i18n></pb-load>
                         </div>
                     </pb-drawer>
+                    <!--
                     <section class="breadcrumbs">
                         <pb-view id="title-view1" src="document1" xpath="//teiHeader/fileDesc/titleStmt/title" view="single">
                             <pb-param name="header" value="short"/>
                         </pb-view>
                     </section>
+                    -->
                     <main class="content-body">
                         <pb-navigation direction="backward" unit="page" emit="transcription" subscribe="transcription">
                             <paper-fab icon="icons:chevron-left"/>
                         </pb-navigation>
+                        <!--
+                        <div style="width:40%; height:100vh; padding-top:10px;">-->
+                        <!-- sfondo sinistra visualizzazione documento: background-color originale #a5adbf -->
+                        <div style="width:30%; height:91vh; background-color:white; float:left; padding-top:10px; border-right:1px solid silver;">
                         <pb-view id="view1" src="document1" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription"/>
-                        <pb-navigation direction="forward" unit="page" emit="transcription" subscribe="transcription">
+                        </div>
+                        <div style="width:69%;height:80vh; padding-left:10px;  padding-top:10px; float:left;">
+                        <pb-view id="view2" src="document1"
+                            column-separator=".tei-cb" append-footnotes="append-footnotes"
+                            subscribe="transcription" emit="transcription">
+                        <pb-param name="col" value="right"/>
+                        </pb-view>
+                        </div>
+
+                        <!--
+                        <pb-navigation direction="forward" unit="page" emit="transcription"
+                            subscribe="transcription">
                             <paper-fab icon="icons:chevron-right"/>
                         </pb-navigation>
+                        -->
                     </main>
                 </app-header-layout>
             </app-drawer-layout>
         </pb-page>
-        <div class="splash"/>
+        <div class="splash">
+             SNORRA EDDA
+        </div>
     </body>
 </html>

@@ -5,7 +5,14 @@
 }
 
 .splash {
-    background-image: url("../images/tei-publisher-logo-color.svg");
+    font-family: 'Rajdhani', sans-serif !important;
+    color: white;
+    font-weight: 500;
+    font-size: 5.7vw;
+    text-align: center;
+    letter-spacing: 1.7vw;
+    padding-top:40vh;
+	  background:#44557a !important;
 }
 
 .menubar {
@@ -25,15 +32,15 @@ body {
     --pb-splash-background-color: var(--pb-color-inverse);
     --pb-logo-image-width: 140px;
     --pb-logo-image-height: 60px;
-    --pb-base-font-family: 'Roboto', 'Noto', sans-serif;
+    --pb-base-font-family: 'Rajdhani', sans-serif;
     --pb-base-font-size: 16px;
     --pb-base-line-height: 1.42857143;
-    --pb-base-font-weight: 300;
+    --pb-base-font-weight: 400;
     --pb-base-font: var(--pb-base-font-weight) var(--pb-base-font-size)/var(--pb-base-line-height) var(--pb-base-font-family);
-    --pb-serif-font-family: "Junicode", Georgia, "Times New Roman", serif;
+    --pb-serif-font-family: "Rajdhani", Georgia, "Times New Roman", serif;
     --pb-content-font-family: var(--pb-serif-font-family);
     --pb-content-font-size: 20px;
-    --pb-heading-font-family: "Oswald", Verdana, "Helvetica", sans-serif;
+    --pb-heading-font-family: "Rajdhani", Verdana, "Helvetica", sans-serif;
     --pb-heading-font-weight: 400 !important;
     --pb-heading-line-height: 1.2;
     --pb-breadcrumbs-font-size: 18px;

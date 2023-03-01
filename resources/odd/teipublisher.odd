@@ -1,12 +1,8 @@
-<?xml-model href="teipublisher_odds.xsd"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:pb="http://teipublisher.com/1.0" xml:lang="en">
-    <teiHeader>
-        <fileDesc>
-            <titleStmt>
-                <title>TEI Publisher ODD
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="teipublisher_odds.xsd"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:pb="http://teipublisher.com/1.0" xml:lang="en"><teiHeader><fileDesc>
+            <titleStmt><title>TEI Publisher ODD
                     ,
-                </title>
-                <title type="short">TEI Publisher Base</title>
-            </titleStmt>
+                </title><title type="short">TEI Publisher Base</title></titleStmt>
             <publicationStmt>
                 <publisher>eXistSolutions GmbH</publisher>
                 <availability>
@@ -28,61 +24,49 @@
                         Publisher</ref>, extending tei_simplePrint.odd.</p>
                 <p>born digital</p>
             </sourceDesc>
-        </fileDesc>
-        <encodingDesc>
-            <tagsDecl/>
-        </encodingDesc>
-        <revisionDesc>
+        </fileDesc><encodingDesc><tagsDecl/></encodingDesc><revisionDesc>
             <change when="2017-09-08">adjust metadata in teiHeader</change>
-        </revisionDesc>
-    </teiHeader>
-    <text>
+        </revisionDesc></teiHeader><text>
         <body>
             <schemaSpec start="TEI teiCorpus" ident="teipublisher" source="tei_simplePrint.odd">
-                <elementSpec ident="text" mode="change">
-                    <model behaviour="body"/>
-                </elementSpec>
-                <elementSpec ident="figure" mode="change">
-                    <model predicate="head or @rendition='simple:display'" behaviour="block"/>
-                    <model behaviour="inline"/>
-                </elementSpec>
-                <elementSpec ident="head" mode="change">
-                    <model predicate="$parameters?header='short'" behaviour="inline">
+                <elementSpec ident="text" mode="change"><model behaviour="body"/></elementSpec>
+                <elementSpec ident="figure" mode="change"><model predicate="head or @rendition='simple:display'" behaviour="block"/><model behaviour="inline"/></elementSpec>
+                <elementSpec ident="head" mode="change"><model predicate="$parameters?header='short'" behaviour="inline">
             <param name="content" value="replace(string-join(.//text()[not(parent::ref)]), '^(.*?)[^\w]*$', '$1')"/>
-        </model>
-                    <model predicate="parent::figure" behaviour="block">
+        </model><model predicate="parent::figure" behaviour="block">
             <outputRendition xml:space="preserve">
             font-style: italic;
             </outputRendition>
-        </model>
-                    <model predicate="parent::table" behaviour="block">
+        </model><model predicate="parent::table" behaviour="block">
             <outputRendition xml:space="preserve">
             font-style: italic;
             </outputRendition>
-        </model>
-                    <model predicate="parent::lg" behaviour="block">
+        </model><model predicate="parent::lg" behaviour="block">
             <outputRendition xml:space="preserve">
             font-style: italic;
             </outputRendition>
-        </model>
-                    <model predicate="parent::list" behaviour="block">
+        </model><model predicate="parent::list" behaviour="block">
             <outputRendition xml:space="preserve">
             font-weight: bold;
             </outputRendition>
-        </model>
-                    <model predicate="parent::div" behaviour="heading">
+        </model><model predicate="parent::div" behaviour="heading">
             <param name="level" value="count(ancestor::div)"/>
-        </model>
-                    <model behaviour="block"/>
-                </elementSpec>
-                <elementSpec ident="teiHeader" mode="change">
-                    <model output="latex" behaviour="metadata"/>
-                    <model output="fo" behaviour="omit"/>
-                    <model output="web" predicate="$parameters?header='short'" behaviour="block"/>
-                    <model output="web" behaviour="metadata"/>
-                </elementSpec>
-                <elementSpec ident="fileDesc" mode="change">
-                    <modelSequence predicate="$parameters?header='short'">
+        </model><model behaviour="block"/></elementSpec>
+                <elementSpec ident="teiHeader" mode="change"><modelSequence predicate="$parameters?header='short'">
+            <model predicate="root(.)/TEI/text/body/biblStruct/note[@type='citation']" behaviour="heading" cssClass="citTitle">
+                <param name="content" value="root(.)/TEI/text/body/biblStruct/note[@type='citation']/node()"/>
+            </model>
+            <model predicate="root(.)/TEI/text/body/biblStruct/note[@type='collection']" behaviour="block">
+                <param name="content" value="switch(root(.)/TEI/text/body/biblStruct/note[@type='collection'])                 case &#34;MXWJHNG9&#34; return &#34;article in miscellaneous work&#34;                 case &#34;C4B9C9QX&#34; return &#34;article in proceedings&#34;                 case &#34;RQ54EU4U&#34; return &#34;article in reference work&#34;                 case &#34;ZTIZQ8UL&#34; return &#34;bibliography&#34;                 case &#34;ZA5VJMGB&#34; return &#34;digital projects &amp;amp; collections&#34;                 case &#34;JTBP2PTP&#34; return &#34;edition&#34;                 case &#34;EC65RA62&#34; return &#34;edition/translation&#34;                 case &#34;3FEKAS3I&#34; return &#34;facsimile&#34;                 case &#34;A4KJN8PV&#34; return &#34;journal article&#34;                 case &#34;L6CEVNGW&#34; return &#34;manuscript studies&#34;                 case &#34;MBXDMXHJ&#34; return &#34;miscellaneous work&#34;                 case &#34;REVJY84Z&#34; return &#34;monograph&#34;                 case &#34;QYZMCD8G&#34; return &#34;proceedings&#34;                 case &#34;YP38FPTC&#34; return &#34;reference work&#34;                 case &#34;X3XYG7IB&#34; return &#34;review&#34;                 case &#34;ZRVX2SLD&#34; return &#34;thesis/dissertation&#34;                 case &#34;6XGTF5TN&#34; return &#34;translation&#34;                 default return ''"/>
+                <pb:template xmlns="" xml:space="preserve"><span class="collectionType" style="text-transform: uppercase !important; color:grey !important; margin-left:10px !important;">[[content]]</span></pb:template>
+            </model>
+            <model behaviour="block">
+                <param name="uri" value="$parameters?doc"/>
+                <param name="content" value="'View More'"/>
+                <pb:template xmlns="" xml:space="preserve"><div class="button-container"><a href="[[uri]]" data-b="1" class="card-info-only-button" style="text-decoration:none;">[[content]]</a></div></pb:template>
+            </model>
+        </modelSequence></elementSpec>
+                <elementSpec ident="fileDesc" mode="change"><modelSequence predicate="$parameters?header='short'">
             <model behaviour="block" cssClass="header-short">
                 <param name="content" value="titleStmt"/>
             </model>
@@ -92,21 +76,11 @@
             <model behaviour="block" cssClass="header-short">
                 <param name="content" value="publicationStmt"/>
             </model>
-        </modelSequence>
-                    <model behaviour="title">
-            <param name="content" value="titleStmt"/>
-        </model>
-                </elementSpec>
-                <elementSpec ident="titleStmt" mode="add">
-                    <model output="latex" behaviour="meta">
-            <param name="content" value="."/>
-        </model>
-                    <model output="fo" behaviour="heading"/>
-                    <model predicate="$parameters?mode='title'" behaviour="heading">
+        </modelSequence></elementSpec>
+                <elementSpec ident="titleStmt" mode="add"><model predicate="$parameters?mode='title'" behaviour="heading">
             <param name="content" value="title[not(@type)]"/>
-            <param name="level" value="5"/>
-        </model>
-                    <modelSequence output="web" predicate="$parameters?header='short'">
+            <param name="level" value="1"/>
+        </model><modelSequence output="web" predicate="$parameters?header='short'">
             <model behaviour="link">
                 <param name="content" value="title[1]"/>
                 <param name="uri" value="$parameters?doc"/>
@@ -117,133 +91,732 @@
             <model behaviour="block">
                 <param name="content" value="author"/>
             </model>
-        </modelSequence>
-                    <model output="web" behaviour="block"/>
-                </elementSpec>
-                <elementSpec ident="publicationStmt" mode="add">
-                    <model output="web" behaviour="block">
+        </modelSequence></elementSpec>
+                <elementSpec ident="publicationStmt" mode="add"><model output="web" behaviour="block">
             <param name="content" value="availability/licence"/>
-        </model>
-                    <model behaviour="omit"/>
-                </elementSpec>
-                <elementSpec ident="licence" mode="add">
-                    <model output="web" predicate="@target" behaviour="link" cssClass="licence">
+        </model><model behaviour="omit"/></elementSpec>
+                <elementSpec ident="licence" mode="add"><model output="web" predicate="@target" behaviour="link" cssClass="licence">
             <param name="content" value="'Licence'"/>
             <param name="uri" value="@target"/>
-        </model>
-                    <model behaviour="omit"/>
-                </elementSpec>
-                <elementSpec ident="title" mode="change">
-                    <model predicate="$parameters?header='short'" behaviour="heading">
-            <param name="level" value="5"/>
-        </model>
-                    <modelSequence predicate="parent::titleStmt/parent::fileDesc">
-            <model predicate="preceding-sibling::title" behaviour="text">
-                <param name="content" value="' — '"/>
-            </model>
-            <model behaviour="inline"/>
-        </modelSequence>
-                    <model predicate="not(@level) and parent::bibl" behaviour="inline"/>
-                    <modelSequence predicate="@level='m' or not(@level)">
-            <model behaviour="inline">
-                <outputRendition xml:space="preserve">
-                font-style: italic;
-                </outputRendition>
-            </model>
-            <model predicate="ancestor::biblFull" behaviour="text">
-                <param name="content" value="', '"/>
-            </model>
-        </modelSequence>
-                    <modelSequence predicate="@level='s' or @level='j'">
-            <model behaviour="inline">
-                <outputRendition xml:space="preserve">
-                font-style: italic;
-                </outputRendition>
-            </model>
-            <model predicate="following-sibling::* and     (  ancestor::biblFull)" behaviour="text">
-                <param name="content" value="', '"/>
-            </model>
-        </modelSequence>
-                    <modelSequence predicate="@level='u' or @level='a'">
-            <model behaviour="inline">
-                <outputRendition xml:space="preserve">
-                font-style: italic;
-                </outputRendition>
-            </model>
-            <model predicate="following-sibling::* and     (    ancestor::biblFull)" behaviour="text">
-                <param name="content" value="'. '"/>
-            </model>
-        </modelSequence>
-                    <model behaviour="inline">
-            <outputRendition xml:space="preserve">
-            font-style: italic;
-            </outputRendition>
-        </model>
-                </elementSpec>
-                <elementSpec ident="author" mode="change">
-                    <model predicate="ancestor::teiHeader" behaviour="block">
+        </model><model behaviour="omit"/></elementSpec>
+                <elementSpec ident="title" mode="change"/>
+                <elementSpec ident="author" mode="change"><model predicate="ancestor::teiHeader" behaviour="block">
             <outputRendition xml:space="preserve" scope="before">
             content: 'By ';
             </outputRendition>
-        </model>
-                    <model behaviour="inline"/>
-                </elementSpec>
-                <elementSpec ident="edition" mode="change">
-                    <model predicate="ancestor::teiHeader" behaviour="block">
+        </model><model behaviour="block">
+            <param name="content" value="node()"/>
+            <param name="type" value="switch(@role) case &#34;author&#34; return &#34;(author)&#34; case &#34;bookAuthor&#34; return &#34;(Book Author)&#34; case &#34;translator&#34; return &#34;(Translator)&#34; case &#34;reviewedAuthor&#34; return &#34;(Reviewed Author)&#34; case &#34;contributor&#34; return &#34;(Contributor)&#34; default return ''"/>
+            <pb:template xmlns="" xml:space="preserve">[[content]] [[type]]</pb:template>
+        </model></elementSpec>
+                <elementSpec ident="edition" mode="change"><model predicate="ancestor::teiHeader" behaviour="block">
             <outputRendition xml:space="preserve" scope="before">
             content: 'Edition: ';
             </outputRendition>
-        </model>
-                </elementSpec>
-            <elementSpec ident="ref" mode="change">
-                    <model predicate="not(@target)" behaviour="inline"/>
-                    <model predicate="not(node())" behaviour="link">
+        </model></elementSpec>
+            <elementSpec ident="ref" mode="change"><model behaviour="link">
+            <param name="uri" value="@target"/>
             <param name="content" value="@target"/>
-            <param name="uri" value="@target"/>
-        </model>
-                    <model behaviour="link">
-            <param name="uri" value="@target"/>
-        </model>
-                </elementSpec>
-            <elementSpec ident="note" mode="change">
-                    <model behaviour="note">
-            <param name="place" value="@place"/>
-            <param name="label" value="@n"/>
-        </model>
-                </elementSpec>
-            <elementSpec ident="notatedMusic" mode="add">
-                    <model behaviour="figure">
+        </model></elementSpec>
+            <elementSpec ident="note" mode="change"><modelSequence>
+            <model predicate="not(@*)" behaviour="listItem">
+                <param name="content" value="node()"/>
+            </model>
+            <model predicate="@type='citation'" behaviour="listItem">
+                <param name="content" value="node()"/>
+                <param name="url" value="@corresp"/>
+                <pb:template xmlns="" xml:space="preserve"><span>[[content]]<br/><a href="[[url]]" style="float:right; text-decoration:none; width: 80px; padding-left: 3px; padding-right: 3px; padding-top: 1px; padding-bottom: 1px; text-align: center; color:black; border-radius: 50px; border: 1px solid black; margin-top: -4px;">View More</a><br/></span></pb:template>
+                <outputRendition xml:space="preserve">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                -webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+padding-left: 5px;
+margin-top:10px;
+background: linear-gradient(90deg, rgba(2,0,36,0.22170875186011907) 0%, rgb(255, 255, 255) 100%);
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </outputRendition>
+            </model>
+            <model predicate="@type='tag'" behaviour="link">
+                <param name="content" value="switch(node()) case &#34;article in miscellaneous work&#34; return &#34;&#34; case &#34;article in proceedings&#34; return  &#34;&#34; case &#34;article in reference work&#34; return  &#34;&#34;                 case &#34;bibliography&#34;  return &#34;&#34; case &#34;digital projects &amp;amp; collections&#34; return &#34;&#34;               case &#34;edition&#34;   return &#34;&#34;                case &#34;edition/translation&#34; return  &#34;&#34;                 case &#34;facsimile&#34; return &#34;&#34;              case &#34;journal article&#34; return &#34;&#34;              case &#34;manuscript studies&#34; return &#34;&#34;                  case &#34;miscellaneous work&#34; return  &#34;&#34;                case &#34;monograph&#34;  return &#34;&#34;               case &#34;proceedings&#34; return  &#34;&#34;                 case &#34;reference work&#34; return &#34;&#34;                case &#34;review&#34;  return &#34;&#34;                 case &#34;thesis/dissertation&#34; return &#34;&#34;                  case &#34;translation&#34;  return  &#34;&#34;               default return node()"/>
+                <param name="uri" value="concat ( '../snecb/home.html?facet-tag=', node())"/>
+                <outputRendition xml:space="preserve">
+                
+                
+                margin-right:5px;
+padding:2px;
+padding-left:3px;
+padding-right:3px;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+background:silver;
+border:0.5px solid silver;
+font-size:11pt;
+                
+                
+                </outputRendition>
+            </model>
+            <model predicate="@type='collection'" behaviour="block">
+                <param name="content" value="switch(node())                 case &#34;MXWJHNG9&#34; return &#34;article in miscellaneous work&#34;                 case &#34;C4B9C9QX&#34; return &#34;article in proceedings&#34;                 case &#34;RQ54EU4U&#34; return &#34;article in reference work&#34;                 case &#34;ZTIZQ8UL&#34; return &#34;bibliography&#34;                 case &#34;ZA5VJMGB&#34; return &#34;digital projects &amp;amp; collections&#34;                 case &#34;JTBP2PTP&#34; return &#34;edition&#34;                 case &#34;EC65RA62&#34; return &#34;edition/translation&#34;                 case &#34;3FEKAS3I&#34; return &#34;facsimile&#34;                 case &#34;A4KJN8PV&#34; return &#34;journal article&#34;                 case &#34;L6CEVNGW&#34; return &#34;manuscript studies&#34;                 case &#34;MBXDMXHJ&#34; return &#34;miscellaneous work&#34;                 case &#34;REVJY84Z&#34; return &#34;monograph&#34;                 case &#34;QYZMCD8G&#34; return &#34;proceedings&#34;                 case &#34;YP38FPTC&#34; return &#34;reference work&#34;                 case &#34;X3XYG7IB&#34; return &#34;review&#34;                 case &#34;ZRVX2SLD&#34; return &#34;thesis/dissertation&#34;                 case &#34;6XGTF5TN&#34; return &#34;translation&#34;                 default return node()"/>
+            </model>
+        </modelSequence></elementSpec>
+            <elementSpec ident="notatedMusic" mode="add"><model behaviour="figure">
             <param name="title" value="label"/>
             <param name="content" value="ptr"/>
-        </model>
-                </elementSpec>
-                <elementSpec ident="ptr" mode="add">
-                    <model predicate="parent::notatedMusic" behaviour="pass-through">
+        </model></elementSpec>
+                <elementSpec ident="ptr" mode="add"><model predicate="parent::notatedMusic" behaviour="webcomponent">
+            <param name="name" value="'pb-mei'"/>
             <param name="url" value="@target"/>
-            <pb:template xmlns="" xml:space="preserve"><pb-mei url="[[url]]" player="player">
-  <pb-option name="appXPath" on="./rdg[contains(@label, 'original')]" off="">Original Clefs</pb-option>
-</pb-mei></pb:template>
-        </model>
-                </elementSpec>
-            <elementSpec ident="formula" mode="change">
-                    <model predicate="@rendition='simple:display'" behaviour="block"/>
-                    <model output="latex" predicate="@rend=&#34;display&#34;" behaviour="inline">
-            <param name="content" value="string()"/>
-            <pb:template xmlns="" xml:space="preserve">\begin{equation}[[content]]\end{equation}</pb:template>
-        </model>
-                    <model output="latex" behaviour="inline">
-            <param name="content" value="string()"/>
-            <pb:template xmlns="" xml:space="preserve">\begin{math}[[content]]\end{math}</pb:template>
-        </model>
-                    <model predicate="@rend='display'" behaviour="webcomponent">
-            <param name="name" value="'pb-formula'"/>
-            <param name="display" value="true()"/>
-        </model>
-                    <model behaviour="webcomponent">
-            <param name="name" value="'pb-formula'"/>
-        </model>
-                </elementSpec>
-            </schemaSpec>
+        </model></elementSpec>
+            <elementSpec ident="biblStruct" mode="add"><modelSequence predicate="$parameters?col='right'">
+            <model predicate="root(.)/TEI/text/body/biblStruct/monogr/imprint/note[@type='url']" behaviour="block">
+                <desc>URLs</desc>
+                <pb:template xmlns="" xml:space="preserve">URL:</pb:template>
+                <outputRendition xml:space="preserve">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                font-size: 15pt !important;
+font-weight: bold !important;
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </outputRendition>
+            </model>
+            <model predicate="root(.)/TEI/text/body/biblStruct/monogr/imprint/note[@type='url']" behaviour="link">
+                <desc>url links</desc>
+                <param name="uri" value="root(.)/TEI/text/body/biblStruct/monogr/imprint/note[@type='url']/node()"/>
+                <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/imprint/note[@type='url']/node()"/>
+                <param name="target" value="'_blank'"/>
+            </model>
+            <model behaviour="block">
+                <pb:template xmlns="" xml:space="preserve"><br/></pb:template>
+            </model>
+            <model predicate="root(.)/TEI/text/body/biblStruct/relatedItem" behaviour="block">
+                <desc>RELATES ITEMS</desc>
+                <pb:template xmlns="" xml:space="preserve">Related Items:</pb:template>
+                <outputRendition xml:space="preserve">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                font-size: 15pt !important;
+font-weight: bold !important;         
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </outputRendition>
+            </model>
+            <model predicate="root(.)/TEI/text/body/biblStruct/relatedItem" behaviour="block">
+                <param name="content" value="root(.)/TEI/text/body/biblStruct/relatedItem/listBibl/bibl/note[@type='citation']"/>
+                <outputRendition xml:space="preserve">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                border:1px soldi silver;
+border-radius: 3px;
+padding:20px;
+font-size:13pt !important;
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </outputRendition>
+            </model>
+            <model behaviour="block">
+                <pb:template xmlns="" xml:space="preserve"><br/></pb:template>
+            </model>
+            <model predicate="root(.)/TEI/text/body/biblStruct/note[not(@*)]" behaviour="block">
+                <desc>NOTE</desc>
+                <pb:template xmlns="" xml:space="preserve">Note:</pb:template>
+                <outputRendition xml:space="preserve">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                font-size: 15pt !important;
+font-weight: bold !important;
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </outputRendition>
+            </model>
+            <model predicate="root(.)/TEI/text/body/biblStruct/note[not(@*)]" behaviour="block">
+                <param name="content" value="root(.)/TEI/text/body/biblStruct/note[not(@*)]"/>
+                <outputRendition xml:space="preserve">
+                font-style:italic;
+padding-left:20px;
+font-size:14pt !important;
+                </outputRendition>
+            </model>
+            <model behaviour="block">
+                <pb:template xmlns="" xml:space="preserve"><br/></pb:template>
+            </model>
+            <model predicate="root(.)/TEI/text/body/biblStruct/note[@type='abstract']" behaviour="inline">
+                <desc>ABSTRACT</desc>
+                <pb:template xmlns="" xml:space="preserve">Abstract:</pb:template>
+                <outputRendition xml:space="preserve">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                font-size: 15pt !important;
+font-weight: bold !important;
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </outputRendition>
+            </model>
+            <model predicate="root(.)/TEI/text/body/biblStruct/note[@type='abstract']" behaviour="block">
+                <param name="content" value="root(.)/TEI/text/body/biblStruct/note[@type='abstract']/node()"/>
+            </model>
+        </modelSequence><modelGrp>
+            <modelSequence>
+                <model predicate="root(.)/TEI/text/body/biblStruct/note[@type='collection']" behaviour="block">
+                    <desc>item sub-collection </desc>
+                    <param name="content" value="switch(root(.)/TEI/text/body/biblStruct/note[@type='collection'])                 case &#34;MXWJHNG9&#34; return &#34;article in miscellaneous work&#34;                 case &#34;C4B9C9QX&#34; return &#34;article in proceedings&#34;                 case &#34;RQ54EU4U&#34; return &#34;article in reference work&#34;                 case &#34;ZTIZQ8UL&#34; return &#34;bibliography&#34;                 case &#34;ZA5VJMGB&#34; return &#34;digital projects &amp;amp; collections&#34;                 case &#34;JTBP2PTP&#34; return &#34;edition&#34;                 case &#34;EC65RA62&#34; return &#34;edition/translation&#34;                 case &#34;3FEKAS3I&#34; return &#34;facsimile&#34;                 case &#34;A4KJN8PV&#34; return &#34;journal article&#34;                 case &#34;L6CEVNGW&#34; return &#34;manuscript studies&#34;                 case &#34;MBXDMXHJ&#34; return &#34;miscellaneous work&#34;                 case &#34;REVJY84Z&#34; return &#34;monograph&#34;                 case &#34;QYZMCD8G&#34; return &#34;proceedings&#34;                 case &#34;YP38FPTC&#34; return &#34;reference work&#34;                 case &#34;X3XYG7IB&#34; return &#34;review&#34;                 case &#34;ZRVX2SLD&#34; return &#34;thesis/dissertation&#34;                 case &#34;6XGTF5TN&#34; return &#34;translation&#34;                 default return ''"/>
+                    <outputRendition xml:space="preserve">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    display: inline-block;
+padding: 0 5px;
+height: 30px;
+font-size: 15pt;
+font-weight:bold;
+line-height: 30px;
+background-color: #f1f1f1;
+text-transform: uppercase !important;
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    </outputRendition>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/title[not(@type)]" behaviour="block">
+                    <desc>Title not type</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/title[not(@type)]"/>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/title[@type='short']" behaviour="block">
+                    <desc>monogr title short</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/title[@type='short']"/>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/author" behaviour="block">
+                    <pb:template xmlns="" xml:space="preserve"><br/></pb:template>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/author" behaviour="block">
+                    <desc>AUTHOR MONOGR</desc>
+                    <pb:template xmlns="" xml:space="preserve">Authors:</pb:template>
+                    <outputRendition xml:space="preserve">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    font-size: 15pt !important;
+font-weight: bold !important;
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    </outputRendition>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/author" behaviour="block">
+                    <desc>monogr author</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/author"/>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/editor" behaviour="block">
+                    <pb:template xmlns="" xml:space="preserve"><br/></pb:template>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/editor" behaviour="block">
+                    <desc>EDITORS</desc>
+                    <pb:template xmlns="" xml:space="preserve">Editors:</pb:template>
+                    <outputRendition xml:space="preserve">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    font-size: 15pt !important;
+font-weight: bold !important;
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    </outputRendition>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/editor" behaviour="block">
+                    <desc>editor in monogr</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/editor"/>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/imprint or root(.)/TEI/text/body/biblStruct/monogr/title[@type='publication'] or root(.)/TEI/text/body/biblStruct/monogr/idno" behaviour="block">
+                    <pb:template xmlns="" xml:space="preserve"><br/></pb:template>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/title[@type='publication']" behaviour="block">
+                    <desc>Title pubblication</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/title[@type='publication']"/>
+                    <pb:template xmlns="" xml:space="preserve"><span><span style="font-weight: bold;">Publication</span>: [[content]]</span></pb:template>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/idno" behaviour="inline">
+                    <desc>idno</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/idno"/>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/edition" behaviour="block">
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/edition"/>
+                    <pb:template xmlns="" xml:space="preserve"><span><span style="text-transform: capitalize; font-weight: bold; margin-top:5px;">Edition</span>: [[content]]</span></pb:template>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/imprint/biblScope" behaviour="block">
+                    <desc>imprint biblScope with unit</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/imprint/biblScope"/>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/imprint/publisher" behaviour="block">
+                    <desc>imprint publisher</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/imprint/publisher"/>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/imprint/pubPlace" behaviour="block">
+                    <desc>pubPlace</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/imprint/pubPlace"/>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/monogr/imprint/date[not(@type)]" behaviour="block">
+                    <desc>imprint date</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/monogr/imprint/date[not(@type)]"/>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/series" behaviour="block">
+                    <desc>series</desc>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/series"/>
+                </model>
+                <model behaviour="block">
+                    <pb:template xmlns="" xml:space="preserve"><br/></pb:template>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/note[@type='tags']/note[@type='tag'] " behaviour="block">
+                    <desc>TAGS</desc>
+                    <param name="content" value="'Tags:'"/>
+                    <outputRendition xml:space="preserve">
+                    
+                    
+                    font-size: 15pt !important;
+font-weight: bold !important;
+                    
+                    
+                    </outputRendition>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/note[@type='tags']/note[@type='tag']" behaviour="inline">
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/note[@type='tags']/note[@type='tag']"/>
+                    <outputRendition xml:space="preserve">
+                    text-transform: capitalize;
+                    </outputRendition>
+                </model>
+                <model behaviour="block">
+                    <pb:template xmlns="" xml:space="preserve"><br/></pb:template>
+                </model>
+                <model predicate="root(.)/TEI/text/body/biblStruct/@corresp" behaviour="block">
+                    <desc>zotero link </desc>
+                    <param name="uri" value="root(.)/TEI/text/body/biblStruct/@corresp"/>
+                    <param name="content" value="root(.)/TEI/text/body/biblStruct/@corresp"/>
+                    <pb:template xmlns="" xml:space="preserve"><span><span style="text-transform: capitalize; font-weight: bold;">Zotero</span>: <a target="_blank" href="[[uri]]">[[content]]</a></span></pb:template>
+                </model>
+            </modelSequence>
+        </modelGrp></elementSpec><elementSpec ident="respStmt" mode="add"><model behaviour="block"/></elementSpec><elementSpec ident="body" mode="change"><modelSequence>
+            <model behaviour="index">
+                <param name="type" value="'toc'"/>
+            </model>
+            <model behaviour="block"/>
+        </modelSequence></elementSpec><elementSpec ident="biblScope" mode="change"><model behaviour="block">
+            <param name="unit" value="@unit"/>
+            <param name="content" value="node()"/>
+            <pb:template xmlns="" xml:space="preserve"><span><span style="text-transform: capitalize; font-weight: bold;">[[unit]]</span>: [[content]]</span></pb:template>
+            <outputRendition xml:space="preserve">
+            text-transform: capitalize;
+            </outputRendition>
+        </model></elementSpec><elementSpec ident="idno" mode="add"><model behaviour="block">
+            <param name="type" value="@type"/>
+            <param name="content" value="node()"/>
+            <pb:template xmlns="" xml:space="preserve"><span><span style="text-transform: capitalize; font-weight: bold;">[[type]]</span>:  [[content]]</span></pb:template>
+        </model></elementSpec><elementSpec ident="bibl" mode="change"/><elementSpec ident="relatedItem" mode="change"/><elementSpec ident="publisher" mode="change"><model behaviour="inline">
+            <param name="content" value="node()"/>
+            <pb:template xmlns="" xml:space="preserve"><span><span style="text-transform: capitalize; font-weight: bold;">Publisher</span>: [[content]]</span></pb:template>
+        </model><model predicate="ancestor::teiHeader" behaviour="omit">
+            <desc>Omit if located in teiHeader. </desc>
+        </model></elementSpec><elementSpec ident="editor" mode="change"><model predicate="ancestor::teiHeader" behaviour="omit"/><model behaviour="block"/></elementSpec><elementSpec ident="date" mode="change"><model behaviour="inline">
+            <param name="content" value="node()"/>
+            <pb:template xmlns="" xml:space="preserve"><span><span style="text-transform: capitalize; font-weight: bold;">Date</span>: [[content]]</span></pb:template>
+        </model><model output="print" predicate="text()" behaviour="inline"/><model output="print" predicate="@when and not(text())" behaviour="inline">
+            <param name="content" value="@when"/>
+        </model><model output="web" predicate="@when" behaviour="alternate">
+            <param name="default" value="."/>
+            <param name="alternate" value="@when"/>
+        </model><model predicate="text()" behaviour="inline"/></elementSpec><elementSpec ident="pubPlace" mode="change"><model behaviour="inline">
+            <param name="content" value="node()"/>
+            <pb:template xmlns="" xml:space="preserve"><span><span style="text-transform: capitalize; font-weight: bold;">Place</span>: [[content]]</span></pb:template>
+        </model><model predicate="ancestor::teiHeader" behaviour="omit">
+            <desc>Omit if located in teiHeader. </desc>
+        </model></elementSpec><elementSpec ident="series" mode="add"><model behaviour="inline">
+            <param name="title" value="root(.)/TEI/text/body/biblStruct/series/title"/>
+            <param name="biblScope" value="root(.)/TEI/text/body/biblStruct/series/biblScope/node()"/>
+            <param name="unit" value="root(.)/TEI/text/body/biblStruct/series/biblScope/@unit"/>
+            <pb:template xmlns="" xml:space="preserve"><span><span style="text-transform: capitalize; font-weight: bold;">Series</span>: [[title]], [[unit]]: [[biblScope]]</span></pb:template>
+        </model></elementSpec></schemaSpec>
         </body>
-    </text>
-</TEI>
+    </text></TEI>

@@ -1,8 +1,13 @@
 <app-toolbar class="menubar">
-    <a href="${app}/index.html" class="logo" data-template="lib:parse-params"/>
+    <!-- <a href="${app}/index.html" class="logo" data-template="lib:parse-params"/> -->
+    <section class="titContainer">
+        <a href="${app}/home.html" data-template="pages:parse-params">
+            <h1 class="tp-title" data-template="config:app-title"/>
+        </a>
+    </section>
     <pb-media-query query="min-width: 1024px">
-        <a href="${app}/index.html" data-template="lib:parse-params">Start</a>
-        <paper-menu-button>
+        <!-- <a href="${app}/index.html" data-template="lib:parse-params">Start</a> -->
+        <!-- <paper-menu-button>
             <a href="#" slot="dropdown-trigger" data-i18n="[title]menu.download.title" title="i18n(download)">
                 <pb-i18n key="menu.download.title">Download</pb-i18n>
             </a>
@@ -38,10 +43,12 @@
                     </pb-edit-xml>
                 </paper-item>
             </paper-listbox>
-        </paper-menu-button>
+        </paper-menu-button--> <!-- abilitare tasto scarica anche nel view.html, però opzione xml da problemi. --> 
         <pb-restricted login="login">
             <paper-menu-button>
-                <a href="#" slot="dropdown-trigger"><pb-i18n key="menu.admin.title">Admin</pb-i18n></a>
+                <a href="#" slot="dropdown-trigger">
+                    <pb-i18n key="menu.admin.title">Admin</pb-i18n>
+                </a>
                 <paper-listbox slot="dropdown-content">
                     <paper-item data-template="pages:edit-odd-list"/>
                     <paper-item>
@@ -58,13 +65,13 @@
     </pb-media-query>
 
     <!-- Search input -->
-    <pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"/>
+    <!-- <pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"/> -->
     <pb-media-query query="min-width: 1024px">
-       <!-- language selector -->
-       <pb-lang name="lang" data-template="pages:languages"/>
+       <!-- language selector 
+       <pb-lang name="lang" data-template="pages:languages"/> -->
     </pb-media-query>
-    <pb-login id="login" group="tei">
-    </pb-login>
+    <!--pb-login id="login" group="tei">
+    </pb-login--> <!-- tasto login nella topbar del view.html -->
     <paper-dialog id="downloadDialog">
         <h2>
             <pb-i18n key="dialogs.generatingFile">Generating file ...</pb-i18n>

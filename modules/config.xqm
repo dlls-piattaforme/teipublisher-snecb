@@ -106,26 +106,62 @@ declare variable $config:pagination-fill := 5;
  : are configured in the index configuration, collection.xconf.
  :)
 declare variable $config:facets := [
-    map {
-        "dimension": "genre",
-        "heading": "facets.genre",
-        "max": 5,
-        "hierarchical": true()
-    },
-    map {
-        "dimension": "language",
-        "heading": "facets.language",
-        "max": 5,
+     map {
+        "dimension": "collection",
+        "heading": "Subcollections",
+        "max": 50,
         "hierarchical": false(),
         "output": function($label) {
             switch($label)
-                case "de" return "German"
-                case "es" return "Spanish"
-                case "la" return "Latin"
-                case "fr" return "French"
-                case "en" return "English"
+                case "MXWJHNG9" return "Article in miscellaneous work"
+                case "C4B9C9QX" return "Article in proceedings"
+                case "RQ54EU4U" return "Article in reference work"
+                case "ZTIZQ8UL" return "Bibliography"
+                case "ZA5VJMGB" return "Digital projects &amp; collections"
+                case "JTBP2PTP" return "Edition"
+                case "EC65RA62" return "Edition/translation"
+                case "3FEKAS3I" return "Facsimile"
+                case "A4KJN8PV" return "Journal article"
+                case "L6CEVNGW" return "Manuscript studies"
+                case "MBXDMXHJ" return "Miscellaneous work"
+                case "REVJY84Z" return "Monograph"
+                case "QYZMCD8G" return "Proceedings"
+                case "YP38FPTC" return "Reference work"
+                case "X3XYG7IB" return "Review"
+                case "ZRVX2SLD" return "Thesis/dissertation"
+                case "6XGTF5TN" return "Translation"
                 default return $label
         }
+    },
+    (:map {
+        "dimension": "range",
+        "heading": "Date",
+        "max": 10,
+        "hierarchical": true()
+    },:)
+    (:map {
+        "dimension": "author",
+        "heading": "Authors",
+        "max": 5,
+        "hierarchical": true()
+    },:)
+    (:map {
+        "dimension": "translator",
+        "heading": "Translators",
+        "max": 5,
+        "hierarchical": true()
+    },:)
+    (:map {
+        "dimension": "editor",
+        "heading": "Editors",
+        "max": 5,
+        "hierarchical": true()
+    },:)
+    map {
+        "dimension": "tag",
+        "heading": "Tags",
+        "max": 10,
+        "hierarchical": false()
     }
 ];
 
@@ -307,14 +343,16 @@ declare variable $config:data-exclude :=
 (:~
  : The main ODD to be used by default
  :)
-declare variable $config:default-odd := "tei_simplePrint.odd";
+(:~ declare variable $config:default-odd := "tei_simplePrint.odd"; ~:)
+declare variable $config:default-odd := "teipublisher.odd";
 
 (:~
  : Complete list of ODD files used by the app. If you add another ODD to this list,
  : make sure to run modules/generate-pm-config.xql to update the main configuration
  : module for transformations (modules/pm-config.xql).
  :)
-declare variable $config:odd-available := ("tei_simplePrint.odd", "teipublisher.odd");
+(:~ declare variable $config:odd-available := ("tei_simplePrint.odd", "teipublisher.odd"); ~:)
+declare variable $config:odd-available := ( $config:default-odd );
 
 (:~
  : List of ODD files which are used internally only, i.e. not for displaying information

@@ -57,7 +57,7 @@ declare function nav:get-section($config as map(*), $doc) {
 };
 
 declare function nav:get-document-title($config as map(*), $root as element()) {
-    nav:get-metadata($config, $root, "title")
+    nav:get-metadata($config, $root, "cit")
 };
 
 declare function nav:get-metadata($config as map(*), $root as element(), $field as xs:string) {
@@ -70,8 +70,17 @@ declare function nav:get-metadata($config as map(*), $root as element(), $field 
                 $header//tei:titleStmt/tei:title
             )[1]
         case "author" return (
-            $root/tei:teiHeader//tei:titleStmt/tei:author,
-            $root/tei:teiHeader//tei:correspDesc/tei:correspAction/tei:persName
+            $root/tei:text/tei:body//tei:biblStruct/tei:monogr/tei:author[@role][0]
+        )
+        case "authorN" return (
+            $root/tei:text/tei:body//tei:biblStruct/tei:monogr/tei:author[@role][0]
+        )
+        case "cit" return (
+                $root/tei:text/tei:body//tei:biblStruct/tei:note[@type='citation']
+        )
+        case "titlePublication" return
+        (
+            $root/tei:text/tei:body//tei:biblStruct/tei:monogr/tei:title[@type='publication']
         )
         case "language" return
             ($root/@xml:lang/string(), $root/tei:teiHeader/@xml:lang/string(), "en")[1]
@@ -79,6 +88,12 @@ declare function nav:get-metadata($config as map(*), $root as element(), $field 
             $root/tei:teiHeader/tei:fileDesc/tei:editionStmt/tei:edition/tei:date,
             $root/tei:teiHeader/tei:publicationStmt/tei:date
         )[1]
+        case "daten" return(
+          $root/tei:text/tei:body//tei:biblStruct/tei:monogr/tei:imprint/tei:date[not(@type)]
+        )
+        case "tag" return (
+            $root/tei:text/tei:body//tei:biblStruct/tei:note[@type='tags']/tei:note
+        )
         case "license" return
             $root/tei:teiHeader/tei:fileDesc/tei:publicationStmt//tei:licence/@target/string()
         default return

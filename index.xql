@@ -25,35 +25,46 @@ declare variable $idx:app-root :=
  :)
 declare function idx:get-metadata($root as element(), $field as xs:string) {
     let $header := $root/tei:teiHeader
+    let $body := $root/tei:text/tei:body
     return
         switch ($field)
             case "title" return
-                string-join((
-                    $header//tei:msDesc/tei:head, $header//tei:titleStmt/tei:title[@type = 'main'],
-                    $header//tei:titleStmt/tei:title,
-                    $root/dbk:info/dbk:title
-                ), " - ")
-            case "author" return (
-                $header//tei:correspDesc/tei:correspAction/tei:persName,
-                $header//tei:titleStmt/tei:author,
-                $root/dbk:info/dbk:author
+                (
+                $body//tei:biblStruct/tei:monogr/tei:title[not(@type)]
+                )
+            case "titleShort" return
+                (
+                $body//tei:biblStruct/tei:monogr/tei:title[@type='short']
+                )
+            case "titlePublication" return
+                (
+                $body//tei:biblStruct/tei:monogr/tei:title[@type='publication']
+                )
+            case "author" return
+                (
+                $body//tei:biblStruct/tei:monogr/tei:author[@role='author']
+                )
+            case "translator" return
+                (
+                $body//tei:biblStruct/tei:monogr/tei:author[@role='translator'] (: per il traduttore comunque usa un tag author, cambia il role :)
+                )
+            case "daten" return (
+                 $body//tei:biblStruct/tei:monogr/tei:imprint/tei:date[not(@type)]
+                )
+            case "range" return (
+                 $body//tei:biblStruct/tei:monogr/tei:imprint/tei:date[@type='range']
             )
-            case "language" return
-                head((
-                    $header//tei:langUsage/tei:language/@ident,
-                    $root/@xml:lang,
-                    $header/@xml:lang
-                ))
-            case "date" return head((
-                $header//tei:correspDesc/tei:correspAction/tei:date/@when,
-                $header//tei:sourceDesc/(tei:bibl|tei:biblFull)/tei:publicationStmt/tei:date,
-                $header//tei:sourceDesc/(tei:bibl|tei:biblFull)/tei:date/@when,
-                $header//tei:fileDesc/tei:editionStmt/tei:edition/tei:date,
-                $header//tei:publicationStmt/tei:date
-            ))
-            case "genre" return (
-                idx:get-genre($header),
-                $root/dbk:info/dbk:keywordset[@vocab="#genre"]/dbk:keyword
+            case "collection" return (
+                $body//tei:biblStruct/tei:note[@type='collection']
+            )
+            case "tag" return (
+                $body//tei:biblStruct/tei:note[@type='tags']/tei:note
+            )
+            case "editor" return (
+                $body//tei:biblStruct/tei:monogr/tei:editor
+            )
+            case "cit" return (
+                $body//tei:biblStruct/tei:note[@type='citation']
             )
             default return
                 ()

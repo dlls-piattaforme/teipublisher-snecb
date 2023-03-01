@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald"/>
+        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"/>
+
+        <title data-template="config:app-title"/>
+        <script src="components/bower_components/webcomponentsjs/webcomponents-loader.js"/>
+
+    	<!-- risorse per cookies -->
+    	<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"/>
+    	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"/>
+    	<link rel="stylesheet" href="resources/css/cookiebanner.css"/>
+
+        <link rel="import" href="components/dependencies-dev.html"/>
+                <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+                background-color: white;
+                font-family: 'Rajdhani', sans-serif;
+            }
+            .loader{
+                position:absolute;
+                width:100%;
+                height:100%;
+                z-index:12;
+                background-color:#fff;
+            }
+            .preloader {
+                width: 200px;
+                height: 200px;
+                display: inline-block;
+                position: relative;
+                display: inline-block;
+                top:50%;
+                left:50%;
+                transform:translate(-50%,-50%);
+
+            }
+
+            .preloader::after,.preloader::before {
+                content: '';
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                border: 2px solid #000;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity:0;
+                animation: animloader14 2s linear infinite;
+            }
+            .preloader::after{
+                animation-delay: 1s;
+            }
+
+            @keyframes animloader14 {
+                0% { transform: scale(0); opacity: 1;}
+                100% { transform: scale(1); opacity: 0;}
+            }
+            .loadtext{
+                position:absolute;
+                color:#000;
+                letter-spacing:1.5vw;
+                font-size:1vw;
+                top:50%;
+                left:50%;
+                transform:translate(-50%,-50%);
+                padding-left:1.5vw;
+            }
+            .loadgone{
+                opacity:0;
+                pointer-events: none;
+            }
+
+            .menuCont{
+                position:absolute;
+                top:5vh;
+                left:5vh;
+                z-index:10;
+                width: 12vw; /* ORIGINALE 10vw */
+            }
+            .menuCont a{
+                width:100%;
+                height:100%;
+            }
+            .logo{
+                width:100px;
+                height:100px;
+                left: 150px;
+                float:left;
+                position:relative;
+            }
+            .logoimage{
+                width:70%;
+                height:70%;
+            }
+
+            .menuMain{ /* container dei tasti in alto */
+                height:50px;
+                width:60vw; /* valore originale 45vw, 60vw consente allineamento anche a tasti nuovi (fino a tasto contacts)*/
+                position:absolute;
+                top:50px;
+                right:50px;
+                z-index:10;
+            }
+            .menuEl{
+                color:#222;
+                float:left;
+                margin-left:20px;
+                font-size:1.1vw;
+                position:relative;
+                top:50%;
+                transform:translateY(-50%);
+                padding:10px;
+                transition:all .3s;
+                cursor:pointer;
+            }
+            .menuEl:hover{
+                transform:translateY(-50%)scale(1.1);
+                background:#44557a;
+                color:#fff;
+            }
+
+
+            .mainContainer{
+                position: relative;
+                z-index: 10;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 48vw;
+                top: 150px;
+                padding-bottom: 150px;
+            }
+            p{
+                text-align: justify;
+                text-justify: inter-word;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="loader">
+            <span class="preloader"/>
+            <div class="loadtext">LOADING</div>
+        </div>
+        <div class="menuCont">
+                <a href="index.html" style="color=#222; text-decoration:none;">
+                    <img class="logoimage" src="resources/images/logo.png"/>
+                </a>
+
+                <div class="copyright" style="font-size: small;">
+                    <p>© Stofnun Árna Magnússonar,<br/>Reykjavík,<br/>SÁM 66, f. 81r</p>
+                </div>
+        </div>
+
+        <div class="menuMain">
+            <a href="index.html" style="color=#222; text-decoration:none;">
+                <div class="menuEl">HOMEPAGE</div>
+            </a>
+            <a href="project.html" style="color=#222; text-decoration:none;">
+                <div class="menuEl">PROJECT</div>
+            </a>
+            <a href="documentation.html" style="color=#222; text-decoration:none;">
+                <div class="menuEl">DOCUMENTATION</div>
+            </a>
+            <a href="team.html" style="color=#222; text-decoration:none;">
+                <div class="menuEl">TEAM</div>
+            </a>
+            <a href="snorribib.html" style="color=#222; text-decoration:none;">
+                <div class="menuEl">SNORRI'S BIBLIOGRAPHY</div>
+            </a>
+            <a href="howtonav.html" style="color=#222; text-decoration:none;">
+                <div class="menuEl">HOW TO NAVIGATE</div>
+            </a>
+            <a href="contacts.html" style="color=#222; text-decoration:none;">
+                <div class="menuEl">CONTACTS</div>
+            </a>
+
+        </div>
+
+        <div class="mainContainer">
+            <div>
+                <h1>DOCUMENTATION</h1>
+
+            <p>
+            <strong>a) How to cite SnECB</strong>
+                    <br/>
+<br/>
+There are two citations for this project. If you wish to cite <i>the data only</i>, please adapt the following according to your preferred referencing style:<br/>
+Cipolla, M.A. (2012-), Snorra Edda. <i>A Collaborative Bibliography</i>. <br/>
+If you wish to cite <i>the web application as a whole</i>, please adapt the following:<br/>
+<br/>
+Cipolla M.A., Cappellotto A., Peratello P. (2022-), <i>Snorra Edda. A Collaborative Bibliography. The Web application</i>, https://test-01.dlls.univr.it/teipublisher-snecb/apps/snecb/index.html
+            </p>
+            <p>
+                <strong>a)	Copyright</strong>
+                    <br/>
+<br/>
+The data and code constituting this project are published under a Creative Commons Attribution Share-Alike International 4.0 License (CC-BY-SA 4.0). This means that you are free to reuse all contents as long as you make your copies or adaptations available under the same license.
+            </p>
+
+            </div>
+
+        </div>
+
+    </body>
+    <!-- javascript per i cookies-->
+    <script src="resources/css/cookies.js"/>
+    <script>
+        window.onload = function() {
+            $('.loader').addClass('loadgone');
+            setTimeout(function(){
+                $('.loader').remove();
+            },1000);
+        };
+    </script>
+    </html>

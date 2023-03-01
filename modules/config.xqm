@@ -324,7 +324,10 @@ declare variable $config:context-path :=
 (:~
  : The root of the collection hierarchy containing data.
  :)
-declare variable $config:data-root :=$config:app-root || "/data";
+(: declare variable $config:data-root := $config:app-root || "/data"; :)
+declare variable $config:data-root :=
+    '/db/apps/data' || substring-after($config:app-root, "/db/apps")
+;
 
 (:~
  : The root of the collection hierarchy whose files should be displayed

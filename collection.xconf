@@ -3,7 +3,7 @@
 		xmlns:dbk="http://docbook.org/ns/docbook">
 		<fulltext default="none" attributes="false" />
 		<lucene>
-			<module uri="http://teipublisher.com/index" prefix="nav" at="index.xql" />
+			<module uri="http://teipublisher.com/index" prefix="nav" at="../../snecb/index.xql" />
 			<text match="/tei:TEI/tei:text">
 				<ignore qname="tei:div" />
 				<!-- CONF INTERNO -->

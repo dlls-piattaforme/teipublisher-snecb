@@ -49,16 +49,6 @@ declare function local:mkcol($collection, $path) {
     local:mkcol-recursive($collection, tokenize($path, "/"))
 };
 
-declare function local:create-data-collection() {
-    if (xmldb:collection-available($config:data-root)) then
-        ()
-    else if (starts-with($config:data-root, $target)) then
-        local:mkcol($target, substring-after($config:data-root, $target || "/"))
-    else
-        ()
-};
-
-
 declare function local:generate-code($collection as xs:string) {
     for $source in ($config:odd-available, $config:odd-internal)
     let $odd := doc($collection || "/resources/odd/" || $source)
@@ -99,7 +89,9 @@ sm:chmod(xs:anyURI($target || "/modules/lib/api-dba.xql"), "rwxr-Sr-x"),
 
 local:mkcol($target, "transform"),
 local:generate-code($target),
-local:create-data-collection(),
 let $pmuConfig := pmc:generate-pm-config(($config:odd-available, $config:odd-internal), $config:default-odd, $config:odd-root)
 return
-    xmldb:store($config:app-root || "/modules", "pm-config.xql", $pmuConfig, "application/xquery")
+    xmldb:store($config:app-root || "/modules", "pm-config.xql", $pmuConfig, "application/xquery"),
+
+(: reindex documents :)
+xmldb:reindex($config:data-root)

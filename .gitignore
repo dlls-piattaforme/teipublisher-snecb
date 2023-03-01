@@ -1,4 +1,5 @@
 build
 transform
+modules/pm-config.xql
 
 .vscode/

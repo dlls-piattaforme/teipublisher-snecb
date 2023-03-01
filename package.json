@@ -1,7 +1,7 @@
 {
-  "name" : "TEMPLATE_SHORT_NAME",
+  "name" : "snecb",
   "version" : "1.0.0",
-  "description" : "TEMPLATE_TITLE",
+  "description" : "SNORRA EDDA",
   "dependencies" : {
     "@teipublisher/pb-components" : "1.24.18"
   }

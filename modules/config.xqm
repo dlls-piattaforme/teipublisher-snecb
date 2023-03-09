@@ -317,8 +317,10 @@ declare variable $config:app-root :=
  : but may need to be changed if the app is behind a proxy.
  :)
 declare variable $config:context-path :=
-   request:get-context-path() || substring-after($config:app-root, "/db")
-    (: "" :)
+    let $app-name := substring-after($config:app-root, "/db/apps/")
+    let $path := substring-after(request:get-url(), request:get-server-name())
+    let $prefix := substring-before($path, "/" || $app-name)
+    return $prefix || "/" || $app-name
 ;
 
 (:~

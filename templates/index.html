@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <html>
 
 <head>
@@ -24,7 +23,7 @@
             body{
                 margin: 0px;
                 padding: 0px;
-                overflow: hidden;
+                overflow: auto;
                 background-color: white;
                 font-family: 'Rajdhani', sans-serif;
                 /*background-image: url('resources/images/bk.jpg');*/ /* immagine sfumata sullo sfondo */
@@ -32,7 +31,6 @@
                 background-position: top;
                 background-size: cover;
             }
-
 
             .loader{
                 position:absolute;
@@ -95,7 +93,7 @@
             .menuCont{
                 position:absolute;
                 top:5vh;
-                left:5vh;
+                left:0vh;
                 z-index:10;
                 width: 15vw; /* EDIT originale 10 */
                 mix-blend-mode: darken;
@@ -104,61 +102,60 @@
                 width:100%;
                 height:100%;
             }
-            .logo{
-                width:150px;
-                height:150px;
-                left: 150px;
-                float:left;
-                position:relative;
+            
+            .menuContCentral{
+                display: none;
             }
+            
             .logoimage{
                 width:120%; /* EDIT originali 50% e 70%, modificati per ricollocamento immagine al centro */
                 height:120%;
-                margin-top: 60%; /* EDIT aggiunti per riposizionare il logo nuovo */
+                margin-top: 60%;
                 margin-left: 20%;
             }
 
             .menuMain{
+                align-items: center;
+                justify-content: center;
                 height:50px;
-                width:60vw;
-                position:absolute;
-                top:50px;
-                right:50px;
+                width:100%;
+                text-align: center;
+                display: flex;
                 z-index:10;
             }
             .menuEl{
                 color:#222;
-                float:left;
-                margin-left:20px;
-                font-size:1.1vw;
-                position:relative;
-                top:50%;
-                transform:translateY(-50%);
-                padding:10px;
+                font-size:1.2vw;
+                padding-top:10px;
+                padding-left:20px;
+                padding-right:20px;
+                padding-bottom:10px;
                 transition:all .3s;
                 cursor:pointer;
             }
             .menuEl:hover{
-                transform:translateY(-50%)scale(1.1);
+                transform:scale(1.1);
                 background:#44557a;
                 color:#fff;
             }
 
             .mainContainer{
-                position: absolute;
+                margin-top: 5%;
+                width: 50%;
+                padding-left: 25%;
+                padding-right: 25%;
+                z-index: 10;
+                /*position: absolute;
                 z-index: 10;
                 top: 52%;
                 left: 50%;
                 transform: translate(-50%,-50%);
-                width: 55vw;
-                /*margin-top: 10%;
-                margin-left: 20%;
-                margin-right: 20%;*/
+                width: 55vw;*/
             }
             .titContainer{
                 color: #44557a;
                 font-weight: 500;
-                font-size: 5vw;
+                font-size: 4vw;
                 text-align: center;
                 width: 100%;
                 position: relative;
@@ -166,7 +163,6 @@
                 letter-spacing: 1.7vw;
                 top: 0%;
                 padding-bottom: 2vh;
-                padding-left: 1.5%;
             }
 
             .titContainer{
@@ -233,6 +229,7 @@
                 background-image:unset;
                 height: 100%;
                 overflow:hidden;
+                top: 10%;
                 /*transition:background-image .3s;*/
             }
 
@@ -265,40 +262,6 @@
                /* color:white !important;*/
             }
 
-            .wave {
-                opacity: .3;
-                position: absolute;
-                top: -310%;
-                left: 30%;
-                width: 3900px;
-                height: 4000px;
-                margin-left: -1450px;
-                margin-top: -400px;
-                transform-origin: 50% 48%;
-                border-radius: 63%;
-                border: 1px solid #44557a;
-                animation: drift 3000ms infinite linear;
-            }
-            @media only screen and (max-width: 1440px) {
-              .wave {
-                    top:-420%;
-              }
-            }
-
-            .whitewave{
-               /* border: 1px solid #fff !important;*/
-            }
-
-            .wave.-three {
-                animation: drift 5000ms infinite linear;
-                margin-left: -1150px;
-            }
-
-            .wave.-two {
-                animation: drift 7000ms infinite linear;
-                margin-left: -1850px;
-            }
-
             .box:after {
                 content: '';
                 display: block;
@@ -310,75 +273,17 @@
                 transform: translate3d(0, 0, 0);
             }
 
-            .card-container{
-                width: 50vw;
-                height: 30vh;
-                position: relative;
-                top: 15vh;
-                left: 50%;
-                transform: translate(-50%,-50%);
-                display: flex;
-                flex-direction: row;
-            }
-
             .button-container{
                 width: 50vw;
                 height: 10vh;
                 position: relative;
-                top: 8vh; /* EDIT originale 10vh, ristretto per ricollocamento immagine al centro */
+                top: 8vh;
                 left: 50%;
                 transform: translate(-50%,-50%);
                 display: flex;
                 flex-direction: row;
             }
-            .card{
-                height: 100%;
-                background-color: black;
-                position: relative;
-                overflow: hidden;
-                width: 200px;
-                margin: 20px;
-                flex-grow: 1;
-                flex-shrink: 1;
-                transition: all .3s;
-                cursor: pointer;
-
-            }
-
-
-            .card img{
-                height: 100%;
-                width: auto;
-                left: 50%;
-                position: relative;
-                opacity: .6;
-                transform: translateX(-50%) scale(1.3);
-                transition: all .3s;
-            }
-            .card-title{
-                color: white;
-                font-weight: bold;
-                font-size: 1.2vw;
-                position: absolute;
-                top: 40%;
-                width: 85%;
-                left: 50%;
-                transform: translateX(-50%);
-                transition: all .3s;
-            }
-            .card-des{
-                opacity: 0;
-                position: absolute;
-                top: 75%;
-                width: 85%;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: .65vw;
-
-                color: white;
-                transition: all .3s;
-                transition-delay: .05s;
-            }
+            
             .card-info-button{
                 position: absolute;
                 left: 50%;
@@ -409,25 +314,6 @@
             }
 
             /*HOVER*/
-
-            .card:hover{
-                transform: scale(1.2);
-                flex-shrink: .9;
-            }
-            .card:hover img{
-                opacity: .2;
-                transform: translateX(-50%) scale(1.1);
-            }
-
-            .card:hover .card-title{
-                top: 0%;
-                font-size: 1vw;
-                opacity: .7;
-            }
-            .card:hover .card-des{
-                top: 25%;
-                opacity: 1;
-            }
             .card-info-button:hover{
                 color: black;
                 background-color: white;
@@ -441,6 +327,8 @@
                 width: 150px;
                 font-size:16pt;
                 cursor: pointer;
+                background:#44557a;
+                color:#fff;
             }
 
 
@@ -451,27 +339,94 @@
 
             /* CUSTOM MEDIA QUERIES */
 
-            /*@media screen and (max-height: 700px){
-                #central-logo{
-                    display: none;
-                    text-align: center;
-                }
-
-                #lateral-logo{
-                    display: contents;
+            @media screen and (min-width: 1201px){
+                .menuEl{
+                    margin-top: 20px;
                 }
             }
 
-            @media screen and (min-height: 701px){
-                #central-logo{
-                    display: contents;
-                    text-align: center;
+            /* misure responsive schermi grandi */
+            @media screen and (max-width: 1200px){
+                .menuEl{
+                    font-size:1.6vw;
+                }
+            }
+
+            /* schermi medi */
+            @media screen and (max-width: 900px){
+                
+                .menuCont{
+                    width: 20vw;
+                }
+                
+                .menuEl{
+                    font-size:2.3vw;
+                    padding-top:10px;
+                    padding-left:10px;
+                    padding-right:10px;
+                    padding-bottom:10px;
+                }
+                
+                .titContainer{
+                    font-size: 6vw;
+                    letter-spacing: 1vw;
                 }
 
-                #lateral-logo{
+                .descContainer{
+                    font-size: 3vw;
+                }
+            }
+
+            /* schermi piccoli (larghezza e altezza sotto) */
+            @media screen and (max-width: 450px){
+                .menuEl{
+                    font-size:3vw;
+                    padding-top:10px;
+                    padding-left:5px;
+                    padding-right:5px;
+                    padding-bottom:10px;
+                }
+                
+                .titContainer{
+                    font-size: 8vw;
+                }
+
+                .descContainer{
+                    font-size: 4.5vw;
+                    padding-bottom: 1vh;
+                }
+
+                .mainContainer{
+                    width: 70%;
+                    padding-left: 15%;
+                    padding-right: 15%;
+                }
+                
+                .menuCont{
                     display: none;
                 }
-            }*/
+                
+                .menuContCentral{
+                    display: contents;
+                    position:absolute;
+                    left:0vh;
+                    z-index:10;
+                    width: 1vw; /* EDIT originale 10 */
+                    mix-blend-mode: darken;
+                }
+                
+                .logoimage-central{
+                    width: 30vw;
+                    height: 35vw;
+                    margin-left: 30%;
+                }
+            }
+            
+            @media screen and (max-height: 500px){
+                .button-container{
+                    height: 25vh;
+                }
+            }
 
         </style>
     </custom-style>
@@ -512,6 +467,11 @@
         <div class="mainContainer">
             <div class="titContainer">SNORRA EDDA</div>
             <div class="descContainer">A Collaborative Bibliography (<strong>BETA</strong> version)</div>
+            <div class="menuContCentral">
+                <a href="index.html" style="color=#222; text-decoration:none;">
+                    <img class="logoimage-central" src="resources/images/newlogo.png"/>
+                </a>
+            </div>
 
             <div class="intro">The huge list of publications touching upon Snorri Sturluson’s <i>Edda</i> (ca. 1220) conveys an idea of its relevance for Old Norse and Old Icelandic literary studies and is evidence of the popularity and reception that the work has enjoyed across epochs and cultures.
 <b>Snorra Edda. A Collaborative Bibliography</b> is an online crowdsourcing database which aims at collecting and searching all the primary and secondary sources on Snorri’s <i>Edda</i> (<i>SnE</i>) since the publication of its <i>editio princeps</i> (1655). The data is being collected in a Zotero bibliographical database called <a href="https://www.zotero.org/groups/1314983/snorraedda">snorraedda</a> and is visualised and searchable through the application TEI Publisher (<i>Open</i>). If you would like to add or update the bibliographical items, you can access <b>snorraedda</b> after signing up, and follow the <a href="https://www.zotero.org/support/quick_start_guide">Zotero guidelines</a> for editing the items.
@@ -526,26 +486,11 @@ Enjoy your research and we hope our work will assist you in your academic endeav
                 </a>
             </div>
         </div>
-        <div class="decorator">
-            <div class="box">
-                <div class="wave -one"/>
-                <div class="wave -two"/>
-                <div class="wave -three"/>
-            </div>
-        </div>
         <script/>
 
     <!-- javascript per i cookies-->
     <script src="resources/css/cookies.js"/>
     <script>
-        /*window.onload = function() {
-
-            $('.loader').addClass('loadgone');
-            setTimeout(function(){
-                $('.loader').remove();
-            },1000);
-        };*/
-
         $('.mainLink').mouseover(function(){
             $('.decorator').addClass('boxov');
             $('.box').addClass('dark');
@@ -554,8 +499,6 @@ Enjoy your research and we hope our work will assist you in your academic endeav
 
             $('.titContainer, .descContainer, .intro ,.mainLink, .menuEl').addClass('whiter');
             $('.wave').addClass('whitewave');
-
-
         })
 
         $('.mainLink').mouseleave(function(){

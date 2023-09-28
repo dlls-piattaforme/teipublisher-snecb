@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
 <head>
@@ -223,7 +222,6 @@
                 margin-right: 20px;
                 background-color: #44557a7a;
                 padding: 0 10px;
-               
             }
             #checkboxLabel{
                  font-family: 'Rajdhani', sans-serif !important; 
@@ -369,7 +367,7 @@
                         <app-toolbar class="toolbar" sticky="sticky">
                             <!-- Search input -->
                             <pb-search action="${app}/search.html" data-template="pages:parse-params" value="${query}" redirect="redirect"/>
-                            <paper-icon-button icon="icons:menu" drawer-toggle="drawer-toggle"/>
+                            <paper-icon-button icon="icons:menu" onclick="mobileFacets()"/> <!-- onlick per hide/show filtri su dispositivi mobili, prima c'era drawer-toggle="drawer-toggle" -->
                         </app-toolbar>
                     </pb-media-query>
                 </app-header>
@@ -385,12 +383,6 @@
                                 <div class="browse" slot="page">
                                     <pb-custom-form id="facets" url="api/search/facets" event="pb-results-received" subscribe="docs" emit="docs"/>
                                     <pb-browse-docs id="document-list" url="api/collection/" sort-options="[{&#34;label&#34;: &#34;Author&#34;, &#34;value&#34;: &#34;cit&#34;},{&#34;label&#34;: &#34;Date&#34;, &#34;value&#34;: &#34;daten&#34;}]" sort-by="cit" filter-options="[{&#34;label&#34;: &#34;browse.title&#34;, &#34;value&#34;: &#34;title&#34;},{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;},{&#34;label&#34;: &#34;Tag&#34;, &#34;value&#34;: &#34;tag&#34;},{&#34;label&#34;: &#34;Publications&#34;, &#34;value&#34;: &#34;titlePublication&#34;},{&#34;label&#34;: &#34;Date&#34;, &#34;value&#34;: &#34;daten&#34;}]" filter-by="author" auto="auto" history="history" login="login" emit="docs" subscribe="docs">
-                                    
-                                    <!-- filtro autore (non funziona): ,{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;} -->
-
-                                    <!--<pb-browse-docs id="document-list" url="api/collection/" sort-options="[{&#34;label&#34;: &#34;browse.title&#34;, &#34;value&#34;: &#34;title&#34;},{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;}]" sort-by="cit" filter-options="[{&#34;label&#34;: &#34;browse.title&#34;, &#34;value&#34;: &#34;title&#34;},{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;},{&#34;label&#34;: &#34;browse.file&#34;, &#34;value&#34;: &#34;file&#34;}]" filter-by="author" auto="auto" history="history" login="login" emit="docs" subscribe="docs">-->
-                                    
-                                    
                                     
                                         <pb-paginate slot="toolbar" id="paginate" per-page="10" range="5" emit="docs" subscribe="docs"/>
                                         <pb-restricted login="login" slot="toolbar">
@@ -481,6 +473,10 @@
             });
         }
         
+        // hide/show filtri su schermi stretti
+        function mobileFacets(){
+            document.getElementById('facets').style['display'] = 'block';
+        }
         
     </script>
 </body>

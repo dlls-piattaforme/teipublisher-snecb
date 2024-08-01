@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://expath.org/ns/pkg" spec="1.0"
-	 version="2023.09a"
+	 version="2024.07"
 	 name="https://dh.dlls.univr.it/bib-arc/snecb"
 	 abbrev="snecb">
 	<title>SNORRA EDDA</title>

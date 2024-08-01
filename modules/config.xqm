@@ -251,7 +251,7 @@ declare variable $config:fop-config :=
  : arguments.
  :)
 declare variable $config:tex-command := function($file) {
-    ( "/usr/local/bin/pdflatex", "-interaction=nonstopmode", $file )
+    ( "/usr/bin/pdflatex", "-interaction=nonstopmode", $file )
 };
 
 (:

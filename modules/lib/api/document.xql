@@ -173,34 +173,7 @@ declare function dapi:latex($request as map(*)) {
                     let $file :=
                         replace($id, "^.*?([^/]+)$", "$1") || format-dateTime(current-dateTime(), "-[Y0000][M00][D00]-[H00][m00]")
                     return
-                        if ($source) then
-                            router:response(200, "application/x-latex", $tex)
-                        else
-                            let $serialized := file:serialize-binary(util:string-to-binary($tex), $config:tex-temp-dir || "/" || $file || ".tex")
-                            let $options :=
-                                <option>
-                                    <workingDir>{$config:tex-temp-dir}</workingDir>
-                                </option>
-                            let $outputPath := $config:tex-temp-dir || "/" || $file || ".pdf"
-                            let $cleanup := if (file:exists($outputPath)) then file:delete($outputPath) else ()
-                            let $output0 :=
-                                process:execute(
-                                    ( $config:tex-command($file) ), $options
-                                )
-                            return
-                                if (not(file:exists($outputPath))) then
-                                    error($errors:BAD_REQUEST, "LaTeX reported errors", dapi:latex-error($output0))
-                                else
-                                    let $output :=
-                                        for $i in 1 to 2
-                                        return
-                                            process:execute(
-                                                ( $config:tex-command($file) ), $options
-                                            )
-                                    return
-                                        let $pdf := file:read-binary($config:tex-temp-dir || "/" || $file || ".pdf")
-                                        return
-                                            response:stream-binary($pdf, "media-type=application/pdf", $file || ".pdf")
+                        router:response(200, "application/x-latex", $tex)
                 else
                     error($errors:NOT_FOUND, "Document " || $id || " not found")
         else
@@ -263,21 +236,7 @@ declare function dapi:pdf($request as map(*)) {
                     let $start := util:system-time()
                     let $fo := $pm-config:print-transform($doc, map { "root": $doc }, $config?odd)
                     return (
-                        if ($request?parameters?source) then
-                            router:response(200, "application/xml", $fo)
-                        else
-                            let $output := xslfo:render($fo, "application/pdf", (), $config:fop-config)
-                            return
-                                typeswitch($output)
-                                    case xs:base64Binary return 
-                                        if ($useCache) then
-                                            let $path := dapi:cache($name, $output)
-                                            return
-                                                response:stream-binary(util:binary-doc($path), "media-type=application/pdf", $id || ".pdf")
-                                        else
-                                            response:stream-binary($output, "media-type=application/pdf", $id || ".pdf")
-                                    default return
-                                        $output
+                        router:response(200, "application/xml", $fo)
                     )
             )
         else

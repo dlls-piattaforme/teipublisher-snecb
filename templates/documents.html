@@ -7,60 +7,14 @@
         </paper-button>
         <ul class="documents" data-template="browse:browse" data-template-per-page="20">
             <li class="document">
-                <!-- <pb-restricted login="login" group="tei">
-                    <div class="document-select">
-                        <paper-checkbox data-template="lib:parse-params" name="documentCheckbox" value="${ident}"/>
-                    </div>
-                </pb-restricted> -->
                 <div class="document-info">
                     <header data-template="browse:short-header"/>
                     <!-- Gestione tasto download e relative opzioni -->
                     <!-- TODO this toolbar should only appear once per Documents papercard -->
-                    <app-toolbar>
-                        <paper-menu-button>
-                            <paper-button slot="dropdown-trigger" data-i18n="[title]menu.download.title" title="i18n(download)">
-                                <iron-icon icon="file-download"/>
-                                <span class="label"><pb-i18n key="menu.download.title">Download</pb-i18n></span>
-                            </paper-button>
-                            <paper-listbox slot="dropdown-content">
-                                <!-- Elementi disabilitati restituscono eccezioni quando cliccati -->
-                                <!-- <paper-item>
-                                    <pb-download type="tex" dialog="downloadDialog" data-i18n="[title]menu.download.pdf-latex" title="i18n(pdf-latex)" data-template="browse:download-link">
-                                        <pb-i18n key="menu.download.pdf-latex">Download</pb-i18n>
-                                    </pb-download>
-                                </paper-item-->
-                                <paper-item>
-                                    <!--pb-edit-xml data-i18n="[title]menu.download.view-tei" title="i18n(view-tei)" path="${path}" data-template="pages:parse-params">
-                                        XML
-                                    </pb-edit-xml-->
-                                    <!-- Questa soluzione consente la visualizzazione corretta nel browser, non il download. target _blank non funziona. -->
-                                    <!--pb-download src="document1" dialog="downloadDialog" data-template="browse:download-link"--> <!-- modello riga funzionante -->
-                                    <pb-download source="source" data-template="browse:download-link"> <!-- source consente di visualizzare in nuovo tab, la dialog non serve finché non avviene il download -->
-                                        View XML
-                                    </pb-download>
-                                </paper-item>
-                                <paper-item>
-                                    <pb-download type="tex" data-i18n="[title]menu.download.pdf-latex" title="i18n(pdf-latex)" source="source" data-template="browse:download-link">
-                                        <pb-i18n key="menu.download.latex-source"/>
-                                    </pb-download>
-                                </paper-item>
-                                <!-- <paper-item>
-                                    <pb-download type="pdf" dialog="downloadDialog" data-i18n="[title]menu.download.pdf-fo" title="i18n(pdf-fo)" data-template="browse:download-link">
-                                        <pb-i18n key="menu.download.pdf-fo"/>
-                                    </pb-download>
-                                </paper-item> -->
-                                <paper-item>
-                                    <pb-download type="pdf" data-i18n="[title]menu.download.fo-source" title="pdf-fo" source="source" data-template="browse:download-link">
-                                        <pb-i18n key="menu.download.fo-source"/>
-                                    </pb-download>
-                                </paper-item>
-                                <paper-item>
-                                    <pb-download type="epub" src="document1" data-template="browse:download-link">
-                                        ePUB
-                                    </pb-download>
-                                </paper-item>
-                            </paper-listbox>
-                        </paper-menu-button>
+                    <app-toolbar style="margin-top:0px">
+                            <pb-download source="source" data-template="browse:download-link" class="card-info-only-button"> <!-- source consente di visualizzare in nuovo tab, la dialog non serve finché non avviene il download -->
+                                View XML
+                            </pb-download>
                     </app-toolbar>
                 </div>
             </li>

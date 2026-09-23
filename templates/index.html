@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8"/>
@@ -26,7 +26,6 @@
                 overflow: auto;
                 background-color: white;
                 font-family: 'Rajdhani', sans-serif;
-                /*background-image: url('resources/images/bk.jpg');*/ /* immagine sfumata sullo sfondo */
                 background-repeat: no-repeat;
                 background-position: top;
                 background-size: cover;
@@ -95,12 +94,8 @@
                 top:5vh;
                 left:0vh;
                 z-index:10;
-                width: 15vw; /* EDIT originale 10 */
+                width: 15vw;
                 mix-blend-mode: darken;
-            }
-            .menuCont a{
-                width:100%;
-                height:100%;
             }
             
             .menuContCentral{
@@ -108,7 +103,7 @@
             }
             
             .logoimage{
-                width:120%; /* EDIT originali 50% e 70%, modificati per ricollocamento immagine al centro */
+                width:120%;
                 height:120%;
                 margin-top: 60%;
                 margin-left: 20%;
@@ -145,16 +140,10 @@
                 padding-left: 25%;
                 padding-right: 25%;
                 z-index: 10;
-                /*position: absolute;
-                z-index: 10;
-                top: 52%;
-                left: 50%;
-                transform: translate(-50%,-50%);
-                width: 55vw;*/
             }
             .titContainer{
                 color: #44557a;
-                font-weight: 500;
+                font-weight: 400;
                 font-size: 4vw;
                 text-align: center;
                 width: 100%;
@@ -163,11 +152,6 @@
                 letter-spacing: 1.7vw;
                 top: 0%;
                 padding-bottom: 2vh;
-            }
-
-            .titContainer{
-                font-weight: 400;
-                width: 100%;
                 transition:all .3s;
             }
 
@@ -434,7 +418,7 @@
                     position:absolute;
                     left:0vh;
                     z-index:10;
-                    width: 1vw; /* EDIT originale 10 */
+                    width: 1vw;
                     mix-blend-mode: darken;
                 }
                 
@@ -460,13 +444,13 @@
             <span class="preloader"/>
             <div class="loadtext">SNORRI</div>
         </div>-->
-        <div class="menuCont">
-            <a href="index.html" style="color=#222; text-decoration:none;">
-                <img class="logoimage" src="resources/images/newlogo.png"/>
+        <div class="menuCont" role="navigation" aria-label="homepage link">
+            <a href="index.html">
+                <img class="logoimage" alt="snecb project logo" src="resources/images/newlogo.png"/>
             </a>
         </div>
 
-        <div class="menuMain">
+        <div class="menuMain" role="navigation" aria-label="topbar navigation links">
             <a href="project.html" style="color=#222; text-decoration:none;">
                 <div class="menuEl">PROJECT</div>
             </a>
@@ -487,12 +471,13 @@
             </a>
 
         </div>
+        <main>
         <div class="mainContainer">
             <div class="titContainer">SNORRA EDDA</div>
             <div class="descContainer">A Collaborative Bibliography (<strong>BETA</strong> version)</div>
-            <div class="menuContCentral">
-                <a href="index.html" style="color=#222; text-decoration:none;">
-                    <img class="logoimage-central" src="resources/images/newlogo.png"/>
+            <div class="menuContCentral" role="navigation" aria-label="homepage link">
+                <a href="index.html">
+                    <img class="logoimage-central" alt="snecb project logo" src="resources/images/newlogo.png"/>
                 </a>
             </div>
 
@@ -509,6 +494,7 @@ Enjoy your research and we hope our work will assist you in your academic endeav
                 </a>
             </div>
         </div>
+        </main>
             
         <footer class="custom-footer">
             <div>

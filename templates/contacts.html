@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
@@ -83,7 +83,7 @@
                 top:10vh;
                 left:5vh;
                 z-index:10;
-                width: 12vw; /* ORIGINALE 10vw */
+                width: 12vw;
             }
             .menuCont a{
                 width:100%;
@@ -168,11 +168,6 @@
                     padding-right:10px;
                     padding-bottom:10px;
                 }
-                
-                .titContainer{
-                    font-size: 6vw;
-                    letter-spacing: 1vw;
-                }
 
                 .descContainer{
                     font-size: 3vw;
@@ -187,10 +182,6 @@
                     padding-left:5px;
                     padding-right:5px;
                     padding-bottom:10px;
-                }
-                
-                .titContainer{
-                    font-size: 8vw;
                 }
 
                 .descContainer{
@@ -213,7 +204,7 @@
                     position:absolute;
                     left:0vh;
                     z-index:10;
-                    width: 1vw; /* EDIT originale 10 */
+                    width: 1vw;
                     mix-blend-mode: darken;
                 }
                 
@@ -230,9 +221,9 @@
             <span class="preloader"/>
             <div class="loadtext">LOADING</div>
         </div>
-        <div class="menuCont">
-                <a href="index.html" style="color=#222; text-decoration:none;">
-                    <img class="logoimage" src="resources/images/logo.png"/>
+        <div class="menuCont" role="navigation" aria-label="homepage link">
+                <a href="index.html">
+                    <img class="logoimage" alt="Stofnun Árna Magnússonar, Reykjavík, SÁM 66, f. 81r" src="resources/images/logo.png"/>
                 </a>
 
                 <div class="copyright" style="font-size: small;">
@@ -240,7 +231,7 @@
                 </div>
         </div>
 
-        <div class="menuMain">
+        <div class="menuMain" role="navigation">
             <a href="index.html" style="color=#222; text-decoration:none;">
                 <div class="menuEl">HOMEPAGE</div>
             </a>
@@ -265,6 +256,7 @@
 
         </div>
 
+        <main>
         <div class="mainContainer">
             <div>
                 <h1>CONTACTS</h1>
@@ -288,6 +280,7 @@ This project is sponsored and powered by the University of Verona, Department of
             </div>
 
         </div>
+        </main>
 
     </body>
     <!-- javascript per i cookies-->

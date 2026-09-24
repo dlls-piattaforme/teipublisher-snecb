@@ -7,9 +7,7 @@
 	<target name="clean">
 		<delete dir="${build.dir}" />
 	</target>
-	<target name="prepare">
-	</target>
-	<target name="xar" depends="clean,prepare">
+	<target name="xar" depends="clean">
 		<mkdir dir="${build.dir}" />
 		<zip destfile="${build.dir}/${project.app}-${project.version}.xar">
 			<fileset dir=".">

@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="resources/css/cookiebanner.css"/>
     <custom-style>
         <style>
+            :root{
+                --color-theme: #222;
+                --color-theme-light: #44557a;
+            }
+
             body{
                 margin: 0px;
                 padding: 0px;
@@ -29,64 +34,6 @@
                 background-repeat: no-repeat;
                 background-position: top;
                 background-size: cover;
-            }
-
-            .loader{
-                position:absolute;
-                width:100%;
-                height:100%;
-                z-index:12;
-                background-color:#44557a;
-            }
-            .preloader {
-                width: 200px;
-                height: 200px;
-                display: inline-block;
-                position: relative;
-                display: inline-block;
-                top:50%;
-                left:50%;
-                transform:translate(-50%,-50%);
-
-            }
-
-            .preloader::after,.preloader::before {
-                content: '';
-                width: 200px;
-                height: 200px;
-                border-radius: 50%;
-                border: 2px solid #000;
-                position: absolute;
-                left: 0;
-                top: 0;
-                opacity:0;
-                animation: animloader14 2s linear infinite;
-            }
-            .preloader::after{
-                animation-delay: 1s;
-            }
-
-            @keyframes animloader14 {
-                0% { transform: scale(0); opacity: 1;}
-                100% { transform: scale(1); opacity: 0;}
-            }
-            .loadtext{
-                font-family: 'Rajdhani', sans-serif !important;
-                color: white;
-                position:absolute;
-                color:white;
-                letter-spacing: 1.7vw;
-                font-weight: 500;
-                font-size: 5.7vw;
-                top:45%;
-                left:50%;
-                transform:translate(-50%,-50%);
-                padding-left:1.5vw;
-
-            }
-            .loadgone{
-                opacity:0;
-                pointer-events: none;
             }
 
             .menuCont{
@@ -118,8 +65,9 @@
                 display: flex;
                 z-index:10;
             }
+
             .menuEl{
-                color:#222;
+                color:var(--color-theme);
                 font-size:1.2vw;
                 padding-top:10px;
                 padding-left:20px;
@@ -127,10 +75,17 @@
                 padding-bottom:10px;
                 transition:all .3s;
                 cursor:pointer;
+                text-decoration: none;
             }
+
             .menuEl:hover{
-                transform:scale(1.1);
-                background:#44557a;
+                /*transform:scale(1.1);*/
+                background: var(--color-theme-light);
+                color:#fff;
+            }
+
+            .menuEl:focus-visible{
+                background:var(--color-theme-light);
                 color:#fff;
             }
 
@@ -141,8 +96,9 @@
                 padding-right: 25%;
                 z-index: 10;
             }
+
             .titContainer{
-                color: #44557a;
+                color: var(--color-theme-light);
                 font-weight: 400;
                 font-size: 4vw;
                 text-align: center;
@@ -159,7 +115,6 @@
                 color: #000;
                 font-weight: 200;
                 font-size: 2vw;
-                text-align: center;
                 width: 100%;
                 position: relative;
                 text-align: center;
@@ -168,13 +123,10 @@
             }
 
             .intro{
-                color: #222;
+                color: var(--color-theme);
                 font-weight: 400;
-                font-size: 1.1;
-                text-align: center;
                 width: 100%;
                 position: relative;
-                text-align: center;
                 top: 0%;
                 padding-bottom: 3vh;
                 text-align:justify;
@@ -195,66 +147,12 @@
                 text-decoration: none;
                 text-align: center;
                 transition:all .3s;
-                color: #222;
+                color: var(--color-theme);
             }
 
             .mainLink:hover{
                 color:white;
                 /*background-color: #b32618;*/
-            }
-
-            .decorator{
-                position: absolute;
-                z-index: 8;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                background-image:unset;
-                height: 100%;
-                overflow:hidden;
-                top: 10%;
-                /*transition:background-image .3s;*/
-            }
-
-            .boxov{
-                background-repeat: no-repeat;
-                background-position: center;
-                /*filter: blur(3px);*/
-                background-size: cover;
-            }
-
-            .box4{
-               /* background-image: url(resources/images/problems.jpg);*/
-               /*background-color:#f2050d;*/
-            }
-
-            .box {
-                width: 100%;
-                height: 100%;
-                position: relative;
-                overflow: hidden;
-                background-color:unset;
-                transform: translate3d(0, 0, 0);
-                transition:all .3s;
-            }
-            .dark{
-                /*background-color:rgba(0,0,0,.7);*/
-            }
-
-            .whiter{
-               /* color:white !important;*/
-            }
-
-            .box:after {
-                content: '';
-                display: block;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 7;
-                transform: translate3d(0, 0, 0);
             }
 
             .button-container{
@@ -266,20 +164,6 @@
                 transform: translate(-50%,-50%);
                 display: flex;
                 flex-direction: row;
-            }
-            
-            .card-info-button{
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 80px;
-                padding: 5px;
-                color: white;
-                text-align: center;
-                bottom: 30px;
-                border-radius: 50px;
-                border: 2px solid white;
-                transition: all .3s;
             }
 
             .card-info-only-button{
@@ -311,37 +195,32 @@
             }
             
             .policy-link{
-                color: #44557a;
+                color: var(--color-theme-light);
                 text-decoration: none;
             }
             
             .policy-link:hover{
-                color: #44557a;
                 text-decoration: underline;
             }
 
-            /*HOVER*/
-            .card-info-button:hover{
-                color: black;
-                background-color: white;
-                width: 90px;
-                cursor: pointer;
+            .policy-link:focus-visible{
+                border: 2px solid var(--color-theme-light);
+                padding: 2px;
             }
 
-            .card-info-only-button:hover{
-                color: black;
-                background-color: white;
+            .intro-link:focus-visible{
+                border: 2px solid var(--color-theme-light);
+                padding: 2px;
+            }
+
+            /*HOVER*/
+            .card-info-only-button:hover,
+            .card-info-only-button:focus-visible{
                 width: 150px;
                 font-size:16pt;
                 cursor: pointer;
-                background:#44557a;
+                background:var(--color-theme-light);
                 color:#fff;
-            }
-
-
-            @keyframes drift {
-                from { transform: rotate(0deg); }
-                from { transform: rotate(360deg); }
             }
 
             /* CUSTOM MEDIA QUERIES */
@@ -440,34 +319,28 @@
 </head>
 
 <body>
-        <!--<div class="loader">
-            <span class="preloader"/>
-            <div class="loadtext">SNORRI</div>
-        </div>-->
-        <div class="menuCont" role="navigation" aria-label="homepage link">
-            <a href="index.html">
-                <img class="logoimage" alt="snecb project logo" src="resources/images/newlogo.png"/>
-            </a>
+        <div class="menuCont">
+            <img class="logoimage" alt="snecb project logo" src="resources/images/newlogo.png"/>
         </div>
 
         <div class="menuMain" role="navigation" aria-label="topbar navigation links">
-            <a href="project.html" style="color=#222; text-decoration:none;">
-                <div class="menuEl">PROJECT</div>
+            <a href="project.html" class="menuEl">
+                <div>PROJECT</div>
             </a>
-            <a href="documentation.html" style="color=#222; text-decoration:none;">
-                <div class="menuEl">DOCUMENTATION</div>
+            <a href="documentation.html" class="menuEl">
+                <div>DOCUMENTATION</div>
             </a>
-            <a href="team.html" style="color=#222; text-decoration:none;">
-                <div class="menuEl">TEAM</div>
+            <a href="team.html" class="menuEl">
+                <div>TEAM</div>
             </a>
-            <a href="snorribib.html" style="color=#222; text-decoration:none;">
-                <div class="menuEl">SNORRI'S BIBLIOGRAPHY</div>
+            <a href="snorribib.html" class="menuEl">
+                <div>SNORRI'S BIBLIOGRAPHY</div>
             </a>
-            <a href="howtonav.html" style="color=#222; text-decoration:none;">
-                <div class="menuEl">HOW TO NAVIGATE</div>
+            <a href="howtonav.html" class="menuEl">
+                <div>HOW TO NAVIGATE</div>
             </a>
-            <a href="contacts.html" style="color=#222; text-decoration:none;">
-                <div class="menuEl">CONTACTS</div>
+            <a href="contacts.html" class="menuEl">
+                <div>CONTACTS</div>
             </a>
 
         </div>
@@ -482,10 +355,9 @@
             </div>
 
             <div class="intro">The huge list of publications touching upon Snorri Sturluson’s <i>Edda</i> (ca. 1220) conveys an idea of its relevance for Old Norse and Old Icelandic literary studies and is evidence of the popularity and reception that the work has enjoyed across epochs and cultures.
-<b>Snorra Edda. A Collaborative Bibliography</b> is an online crowdsourcing database which aims at collecting and searching all the primary and secondary sources on Snorri’s <i>Edda</i> (<i>SnE</i>) since the publication of its <i>editio princeps</i> (1655). The data is being collected in a Zotero bibliographical database called <a href="https://www.zotero.org/groups/1314983/snorraedda">snorraedda</a> and is visualised and searchable through the application TEI Publisher (<i>Open</i>). If you would like to add or update the bibliographical items, you can access <b>snorraedda</b> after signing up, and follow the <a href="https://www.zotero.org/support/quick_start_guide">Zotero guidelines</a> for editing the items.
+<b>Snorra Edda. A Collaborative Bibliography</b> is an online crowdsourcing database which aims at collecting and searching all the primary and secondary sources on Snorri’s <i>Edda</i> (<i>SnE</i>) since the publication of its <i>editio princeps</i> (1655). The data is being collected in a Zotero bibliographical database called <a class="intro-link" href="https://www.zotero.org/groups/1314983/snorraedda">snorraedda</a> and is visualised and searchable through the application TEI Publisher (<i>Open</i>). If you would like to add or update the bibliographical items, you can access <b>snorraedda</b> after signing up, and follow the <a class="intro-link" href="https://www.zotero.org/support/quick_start_guide">Zotero guidelines</a> for editing the items.
 Each entry can be downloaded in XML/TEI or other formats directly from our TEI Publisher application (see <i>How to navigate</i>); the full database can be access and downloaded from the Zotero group library.
 Enjoy your research and we hope our work will assist you in your academic endeavours!
-
 
             </div>
             <div class="button-container">
@@ -509,27 +381,6 @@ Enjoy your research and we hope our work will assist you in your academic endeav
 
     <!-- javascript per i cookies-->
     <script src="resources/css/cookies.js"/>
-    <script>
-        $('.mainLink').mouseover(function(){
-            $('.decorator').addClass('boxov');
-            $('.box').addClass('dark');
-
-            $('.decorator').addClass('box4');
-
-            $('.titContainer, .descContainer, .intro ,.mainLink, .menuEl').addClass('whiter');
-            $('.wave').addClass('whitewave');
-        })
-
-        $('.mainLink').mouseleave(function(){
-            $('.decorator').removeClass('boxov');
-            $('.box').removeClass('dark');
-
-            $('.decorator').removeClass('box4');
-
-            $('.titContainer, .descContainer, .intro ,.mainLink, .menuEl').removeClass('whiter');
-            $('.wave').removeClass('whitewave');
-        })
-    </script>
 </body>
 
 </html>

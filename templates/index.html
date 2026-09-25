@@ -78,14 +78,9 @@
                 text-decoration: none;
             }
 
-            .menuEl:hover{
-                /*transform:scale(1.1);*/
-                background: var(--color-theme-light);
-                color:#fff;
-            }
-
+            .menuEl:hover,
             .menuEl:focus-visible{
-                background:var(--color-theme-light);
+                background: var(--color-theme-light);
                 color:#fff;
             }
 
@@ -131,6 +126,11 @@
                 padding-bottom: 3vh;
                 text-align:justify;
                 transition:all .3s;
+            }
+
+            .intro-link:focus-visible{
+                border: 2px solid var(--color-theme-light);
+                padding: 2px;
             }
 
             .linkContainer{
@@ -204,11 +204,6 @@
             }
 
             .policy-link:focus-visible{
-                border: 2px solid var(--color-theme-light);
-                padding: 2px;
-            }
-
-            .intro-link:focus-visible{
                 border: 2px solid var(--color-theme-light);
                 padding: 2px;
             }

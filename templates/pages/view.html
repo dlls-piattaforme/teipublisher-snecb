@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
@@ -83,6 +83,7 @@
                 border: 2px solid black;
                 margin-top:5px;
             }
+            
             .titContainer{
                 color: #44557a;
                 font-size: 1.5vw !important;
@@ -91,6 +92,11 @@
                 text-transform: uppercase;
 
             }
+            #appname-link:focus-visible{
+                border: 2px solid blue;
+                padding: 2px;
+            }
+
             .tp-title {
                font-family: 'Rajdhani', sans-serif !important;
                 font-weight: 500 !important;
@@ -117,7 +123,7 @@
                     </app-header>
 
                     <pb-drawer toggle="tocToggle" class="toc" emit="toc" subscribe="transcription">
-                        <div class="drawer-content">
+                        <div class="drawer-content" role="banner">
                             <h3>
                                 <pb-i18n key="document.contents">Contents</pb-i18n>
                             </h3>

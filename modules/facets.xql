@@ -46,7 +46,7 @@ declare function facets:print-table($config as map(*), $nodes as element()+, $va
             ft:facets($nodes, $config?dimension, $count)
     return
         if (map:size($facets) > 0) then
-            <table>
+            <table role="presentation">
             {
                 array:for-each(facets:sort($facets), function($entry) {
                     map:for-each($entry, function($label, $freq) {
